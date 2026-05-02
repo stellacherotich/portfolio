@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stella Cherotich, Learning Experience Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2a1f1a;
+    --paper: #f8f4ee;
+    --warm-mid: #ede5da;
+    --accent: #b85c38;
+    --accent-yellow: #b85c38;
+    --accent-light: #b85c38;
+    --accent-pale: #f5e8e2;
+    --muted: #9a8c82;
+    --purple: #2a1f1a;
+    --rule: rgba(42,31,26,0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: rgba(248,244,238,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--purple); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 5rem 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--purple);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--purple);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 42ch;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--purple);
+    color: var(--paper);
+    padding: 0.85rem 2rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right-inner {
+    position: absolute;
+    inset: 0;
+    background: var(--warm-mid);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 3rem 3rem 4rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-item {
+    border-top: 2px solid var(--purple);
+    padding-top: 1rem;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--purple);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 0.35rem;
+    display: block;
+  }
+
+  .hero-domain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: var(--warm-mid);
+    color: var(--purple);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-family: var(--mono);
+  }
+
+  .tag.dark {
+    background: var(--purple);
+    color: var(--paper);
+  }
+
+  /* ── SECTION SCAFFOLDING ── */
+  section { padding: 7rem 5rem; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 4rem;
+    height: 1px;
+    background: var(--purple);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--purple);
+  }
+
+  /* ── POSITIONING STRIP ── */
+  .positioning {
+    background: var(--purple);
+    color: var(--paper);
+    padding: 5rem;
+  }
+
+  .positioning-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .positioning h2 { color: var(--paper); }
+  .positioning h2 em { color: var(--accent-yellow); }
+
+  .positioning-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(250,252,248,0.85);
+    font-weight: 300;
+  }
+
+  .positioning-body p + p { margin-top: 1.25rem; }
+
+  .positioning-body strong {
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--warm-mid); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+
+  .service-card {
+    padding: 2.5rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--accent-pale); }
+
+  .service-num {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--purple);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── WORK ── */
+  .work { background: var(--paper); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 3rem;
+    border-top: 2px solid var(--purple);
+  }
+
+  .case-row {
+    display: grid;
+    grid-template-columns: 3fr 5fr 2fr;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .case-row:hover { background: var(--accent-pale); }
+
+  .case-meta {
+    padding: 2.5rem 2rem 2.5rem 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  .case-year {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .case-client {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--purple);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: var(--mono);
+  }
+
+  .case-body {
+    padding: 2.5rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  .case-title {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .case-desc {
+    font-size: 0.875rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 55ch;
+  }
+
+  .case-tags-col {
+    padding: 2.5rem 0 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .case-arrow {
+    font-size: 1.25rem;
+    color: var(--purple);
+    transition: transform 0.2s;
+    align-self: flex-end;
+  }
+
+  .case-row:hover .case-arrow { transform: translateX(6px); }
+
+  /* ── CASE STUDY PAGES ── */
+  .case-study-page {
+    display: none;
+    background: var(--paper);
+    min-height: 100vh;
+  }
+
+  .case-study-page.active { display: block; }
+
+  .cs-hero {
+    background: var(--purple);
+    color: var(--paper);
+    padding: 10rem 5rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 80px;
+    background: var(--paper);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  }
+
+  .cs-back {
+    position: absolute;
+    top: 6rem;
+    left: 5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-yellow);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+  }
+
+  .cs-back:hover { color: var(--paper); }
+
+  .cs-hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .cs-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-yellow);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .cs-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .cs-hero p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(250,252,248,0.82);
+    font-weight: 300;
+    max-width: 55ch;
+  }
+
+  .cs-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cs-detail-item { border-top: 1px solid rgba(42,31,26,0.1); padding-top: 1rem; }
+
+  .cs-detail-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248,244,238,0.55);
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .cs-detail-value {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--paper);
+  }
+
+  .cs-content {
+    padding: 5rem 5rem 7rem;
+    max-width: 860px;
+  }
+
+  .cs-section {
+    margin-bottom: 4rem;
+  }
+
+  .cs-section h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--accent-yellow);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+  }
+
+  .cs-section h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.75rem 0 0.6rem;
+    color: var(--purple);
+  }
+
+  .cs-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #1e2b1c;
+    margin-bottom: 0.85rem;
+    font-weight: 300;
+  }
+
+  .cs-section ul {
+    list-style: none;
+    margin: 0.75rem 0;
+  }
+
+  .cs-section ul li {
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: #1e2b1c;
+    font-weight: 300;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.4rem;
+  }
+
+  .cs-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--purple);
+    font-size: 0.8rem;
+  }
+
+  .cs-callout {
+    background: var(--warm-mid);
+    border-left: 3px solid var(--accent-yellow);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .cs-callout cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .cs-impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .impact-card {
+    background: var(--purple);
+    color: var(--paper);
+    padding: 2rem 1.5rem;
+  }
+
+  .impact-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--accent-yellow);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .impact-label {
+    font-size: 0.8rem;
+    color: rgba(250,252,248,0.8);
+    line-height: 1.4;
+  }
+
+  .artifact-preview {
+    background: var(--warm-mid);
+    border: 1px solid var(--rule);
+    padding: 2.5rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .artifact-label {
+    position: absolute;
+    top: -0.6rem;
+    left: 1.5rem;
+    background: var(--purple);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .artifact-content {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    line-height: 1.85;
+    color: var(--ink);
+    white-space: pre-wrap;
+  }
+
+  /* ── SPEC WORK NOTE ── */
+  .spec-note {
+    background: var(--accent-pale);
+    border: 1px solid var(--accent);
+    padding: 1.25rem 1.75rem;
+    margin-bottom: 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .spec-note-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .spec-note p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--purple);
+    font-weight: 400;
+    margin: 0 !important;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--purple); color: var(--paper); }
+  .process .section-label { color: var(--accent-yellow); }
+  .process .section-label::after { background: var(--accent-yellow); }
+  .process h2 { color: var(--paper); }
+  .process h2 em { color: var(--accent-yellow); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(42,31,26,0.1);
+    border-left: 1px solid rgba(42,31,26,0.1);
+  }
+
+  .process-step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(42,31,26,0.1);
+    border-bottom: 1px solid rgba(42,31,26,0.1);
+  }
+
+  .process-num {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--accent-yellow);
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+
+  .process-step h3 {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .process-step p {
+    font-size: 0.85rem;
+    color: rgba(250,252,248,0.72);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--warm-mid); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial-card {
+    background: var(--paper);
+    padding: 2.5rem;
+    border-top: 3px solid var(--accent-yellow);
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: 5rem;
+    color: var(--accent-pale);
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #1e2b1c;
+    font-style: italic;
+    font-family: var(--serif);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-source {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    display: block;
+  }
+
+  .testimonial-org {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-top: 0.2rem;
+    display: block;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--paper); }
+
+  .exp-timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    border-bottom: 1px solid var(--rule);
+    padding: 2.25rem 0;
+    align-items: start;
+    gap: 3rem;
+  }
+
+  .exp-period {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 0.15rem;
+    line-height: 1.5;
+  }
+
+  .exp-body h3 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-org {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--purple);
+    letter-spacing: 0.05em;
+    font-family: var(--mono);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .exp-body p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--purple);
+    color: var(--paper);
+    padding: 7rem 5rem;
+  }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .contact h2 { color: var(--paper); }
+  .contact h2 em { color: var(--accent-yellow); }
+
+  .contact-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(250,252,248,0.8);
+    font-weight: 300;
+    margin-top: 1.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(42,31,26,0.12);
+    padding-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--accent-light); }
+
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248,244,238,0.55);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(244,246,240,0.35);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(244,246,240,0.08);
+    font-size: 0.75rem;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-in-1 { animation-delay: 0.1s; }
+  .fade-in-2 { animation-delay: 0.25s; }
+  .fade-in-3 { animation-delay: 0.4s; }
+  .fade-in-4 { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 8rem 2rem 3rem; }
+    .hero-right { display: none; }
+    .positioning { padding: 4rem 2rem; }
+    .positioning-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .case-row { grid-template-columns: 1fr; }
+    .case-meta { border-right: none; padding: 1.5rem 0 0; }
+    .case-body { padding: 1rem 0; border-right: none; }
+    .case-tags-col { padding: 0 0 1.5rem; flex-direction: row; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+    .cs-hero { padding: 8rem 2rem 4rem; }
+    .cs-back { left: 2rem; }
+    .cs-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cs-content { padding: 3rem 2rem 5rem; }
+    .cs-impact-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <a href="#home" class="nav-logo" onclick="showPage('home')">Stella Cherotich</a>
+  <ul class="nav-links">
+    <li><a href="#about" onclick="showPage('home'); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),100)">About</a></li>
+    <li><a href="#work" onclick="showPage('home'); setTimeout(()=>document.getElementById('work').scrollIntoView({behavior:'smooth'}),100)">Work</a></li>
+    <li><a href="#contact" onclick="showPage('home'); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100)">Contact</a></li>
+    <li><a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank">CV →</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ MAIN SITE ═══════════ -->
+<div id="page-home">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-left">
+      <span class="hero-tag fade-in fade-in-1">Learning Experience Designer · Nairobi, Kenya</span>
+      <h1 class="fade-in fade-in-2">
+        Designing <em>knowledge systems</em> that work in the field
+      </h1>
+      <p class="hero-sub fade-in fade-in-3">
+        I build learning and knowledge operations infrastructure for organisations delivering real impact at scale: from operational SOPs and staff onboarding to technical curriculum and stakeholder-facing guides.
+      </p>
+      <div class="hero-cta fade-in fade-in-4">
+        <a href="#work" class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See My Work</a>
+        <a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank" class="btn-secondary">Download CV</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-inner">
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">6+</span>
+            <span class="stat-label">Programmes shipped end-to-end</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">450+</span>
+            <span class="stat-label">Learners reached across programmes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">NPS across flagship programmes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3×</span>
+            <span class="stat-label">Concurrent programme portfolios managed</span>
+          </div>
+        </div>
+        <div class="hero-domain-tags">
+          <span class="tag">Knowledge Operations</span>
+          <span class="tag">SOP Design</span>
+          <span class="tag">Curriculum Engineering</span>
+          <span class="tag dark">Non-profit Programmes</span>
+          <span class="tag">Adult Learning</span>
+          <span class="tag">Field-Based Delivery</span>
+          <span class="tag">Data-Informed Design</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONING -->
+  <div class="positioning">
+    <div class="positioning-grid">
+      <h2>What <em>drives</em><br>my work</h2>
+      <div class="positioning-body">
+        <p>I specialise in the space where <strong>knowledge capture meets learning design</strong>, helping organisations that operate at scale turn tacit expertise into structured, accessible assets that frontline staff can actually use.</p>
+        <p>My background spans technical curriculum engineering, corporate training for NGO partners, and operational documentation. I've designed for learners with variable digital access, tight resource constraints, and high operational stakes. Contexts where a poorly designed onboarding guide or an unclear SOP has real consequences.</p>
+        <p>I'm particularly drawn to organisations building knowledge infrastructure from the ground up, where there is an opportunity to design systems that will compound in value over time, not just produce one-off training events.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <span class="section-label">What I do</span>
+    <h2>Services &amp; <em>Capabilities</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <h3>Knowledge Operations Design</h3>
+        <p>SOPs, playbooks, onboarding guides, and process documentation designed for operational clarity and consistent execution, not just compliance.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <h3>Curriculum &amp; Learning Experience Design</h3>
+        <p>Structured learning programmes grounded in adult learning principles, from needs analysis and sequencing through to assessment and iteration.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <h3>Video &amp; Multimedia Learning Content</h3>
+        <p>Learning scripts, storyboards, and video-based course design for field-based and asynchronous delivery contexts.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <h3>Programme Evaluation &amp; Insights</h3>
+        <p>Turning learner feedback and performance data into clear insights that improve programme quality and support continuous improvement.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <h3>Stakeholder-Facing Knowledge Products</h3>
+        <p>Guides, resource hubs, and Centre of Excellence content designed for external partners, communities, and institutional stakeholders.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <h3>Learning Systems &amp; Quality Assurance</h3>
+        <p>QA frameworks, delivery checklists, and standard operating structures that make programmes consistent, scalable, and auditable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <span class="section-label">Selected work</span>
+    <h2>Case <em>Studies</em></h2>
+    <div class="work-grid">
+
+      <a class="case-row" onclick="openCase('cs-ditd'); return false;" href="#">
+        <div class="case-meta">
+          <span class="case-year">2024</span>
+          <span class="case-client">Global Shapers Nairobi</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">Dining in the Dark: Event Operations Tracker and Stakeholder SOP</div>
+          <p class="case-desc">Designed and managed a master event tracker and operational SOP for a high-profile community fundraiser. Covered multi-stakeholder coordination, venue logistics, procurement timelines, and day-of delivery. Demonstrates knowledge capture and project management applied to a time-critical, zero-margin-for-error operational context.</p>
+        </div>
+        <div class="case-tags-col">
+          <div class="case-tags">
+            <span class="tag">Project Management</span>
+            <span class="tag">SOP Design</span>
+            <span class="tag dark">Stakeholder Ops</span>
+          </div>
+          <span class="case-arrow">&#8594;</span>
+        </div>
+      </a>
+
+      <a class="case-row" onclick="openCase('cs-ngo'); return false;" href="#">
+        <div class="case-meta">
+          <span class="case-year">2024</span>
+          <span class="case-client">Italian NGO Partner</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">Digital Literacy Programme for Underserved High School Learners</div>
+          <p class="case-desc">A foundational technology programme designed for underserved youth with variable device access and limited prior digital exposure. Programme success drove a multi-year contract renewal and expanded client investment, demonstrating impact in resource-constrained, community-facing delivery contexts.</p>
+        </div>
+        <div class="case-tags-col">
+          <div class="case-tags">
+            <span class="tag">NGO Client</span>
+            <span class="tag">Community Impact</span>
+            <span class="tag">LX Design</span>
+          </div>
+          <span class="case-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="case-row" onclick="openCase('cs-swe'); return false;" href="#">
+        <div class="case-meta">
+          <span class="case-year">2024–2025</span>
+          <span class="case-client">EdTech / Moringa School</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">Foundations of Software Engineering: Curriculum Engineering &amp; Iteration</div>
+          <p class="case-desc">End-to-end curriculum architecture for a beginner technical programme. Includes needs analysis, learning outcome design, cognitive-load reduction strategy, assessment design, and two full iteration cycles informed by learner performance data and instructor feedback.</p>
+        </div>
+        <div class="case-tags-col">
+          <div class="case-tags">
+            <span class="tag">Curriculum Eng.</span>
+            <span class="tag">Data-Informed</span>
+            <span class="tag">Iteration</span>
+          </div>
+          <span class="case-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <span class="section-label">How I work</span>
+    <h2>My <em>design</em> process</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="process-num">01 / DISCOVER</span>
+        <h3>Needs &amp; Context Analysis</h3>
+        <p>Understand the learner population, operational environment, resource constraints, and success metrics before touching a design tool. What does good look like for the people who will use this?</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">02 / DESIGN</span>
+        <h3>Structure &amp; Sequence</h3>
+        <p>Translate needs into architecture: learning outcomes, knowledge flows, SOP logic, or content scaffolding. Every design decision has a pedagogical or operational rationale.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">03 / DEVELOP</span>
+        <h3>Build &amp; Validate</h3>
+        <p>Produce the artefact (curriculum, guide, video script, playbook) and validate it with instructors, subject matter experts, or pilot users before full deployment.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-num">04 / SCALE</span>
+        <h3>Document, Enable, Iterate</h3>
+        <p>Capture delivery standards, build facilitator resources, and establish feedback loops so the programme or system improves over time without starting from scratch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="about">
+    <span class="section-label">What others say</span>
+    <h2>In their <em>words</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Stella is one of the most consistent people in the team. She goes above and beyond and produces quality work for both B2B clients and B2C products. The Foundations of Software Engineering programme, which she designed, collected feedback on, and iterated, is a standout piece of work."</p>
+        <span class="testimonial-source">Head of Product</span>
+        <span class="testimonial-org">EdTech Company</span>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Stella's contributions to the Digital Literacy programme were marked by continued excellence. Her consistent efforts contributed to the programme receiving excellent stakeholder feedback, which led to the contract being both renewed and expanded, a significant achievement that speaks to her ability to deliver and maintain strong partner relationships."</p>
+        <span class="testimonial-source">Director of Corporate Training</span>
+        <span class="testimonial-org">EdTech Company</span>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Stella combines thoughtful learning design with strong operational awareness. She understands how to balance pedagogy, stakeholder needs, and real-world constraints. Her work significantly improved the structure, quality, and scalability of our learning initiatives."</p>
+        <span class="testimonial-source">Director of Product</span>
+        <span class="testimonial-org">EdTech Company</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience">
+    <span class="section-label">Background</span>
+    <h2>Experience &amp; <em>Education</em></h2>
+    <div class="exp-timeline">
+      <div class="exp-row">
+        <span class="exp-period">May 2024 – Present</span>
+        <div class="exp-body">
+          <h3>Curriculum Engineer &amp; Product Owner</h3>
+          <span class="exp-org">Moringa School · Nairobi, Kenya</span>
+          <p>Lead curriculum engineering and product ownership across Data Science, Data Analytics, High School Bootcamp, and corporate training programmes. Design SOPs, pacing guides, QA frameworks, and facilitator resources. Manage 3+ concurrent programme portfolios. Shipped curriculum for 450+ learners; achieved 50+ NPS across flagship programmes.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-period">Jan 2024 – Apr 2024</span>
+        <div class="exp-body">
+          <h3>Curriculum Engineer (Intern)</h3>
+          <span class="exp-org">AfterWork · Nairobi, Kenya</span>
+          <p>Designed and facilitated data-focused learning programmes. Used learner feedback and performance data to iterate on engagement and outcomes across community workshops.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-period">Jul 2023 – Jan 2024</span>
+        <div class="exp-body">
+          <h3>Operations &amp; Data Consultant</h3>
+          <span class="exp-org">Freelance</span>
+          <p>Supported organisations in improving operational efficiency through data analysis, process optimisation, and documentation. Built early SOP and reporting frameworks for small operational teams.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-period">Dec 2017 – Dec 2019</span>
+        <div class="exp-body">
+          <h3>Assistant English Instructor</h3>
+          <span class="exp-org">LBE Japan</span>
+          <p>Facilitated cross-cultural learning experiences in a multilingual classroom environment. Developed differentiated materials for learners at varying proficiency levels.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-period">Ongoing</span>
+        <div class="exp-body">
+          <h3>Product Management Course</h3>
+          <span class="exp-org">Zindua School · Nairobi, Kenya</span>
+          <p>Pursuing formal product management training covering product strategy, roadmapping, stakeholder alignment, and delivery frameworks. Applied directly to product ownership responsibilities across the Moringa curriculum portfolio.</p>
+        </div>
+      </div>
+      <div class="exp-row">
+        <span class="exp-period">Ongoing</span>
+        <div class="exp-body">
+          <h3>Postgraduate Diploma in Learning Design &amp; Technology</h3>
+          <span class="exp-org">Open University of Kenya (OUK)</span>
+          <p>Formal postgraduate study in instructional design theory, e-learning development, and educational technology, applied directly to current professional practice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div>
+        <span class="section-label" style="color:var(--accent)">Get in touch</span>
+        <h2>Let's build <em>something</em> that matters</h2>
+        <p class="contact-body">I'm particularly interested in roles and collaborations where knowledge systems, operational learning, and mission-driven impact converge. If that sounds like your organisation, I'd welcome a conversation.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/stella-cherotich/" target="_blank" class="contact-link">
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            linkedin.com/in/stella-cherotich
+          </div>
+        </a>
+        <a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank" class="contact-link">
+          <div>
+            <span class="contact-link-label">Curriculum Vitae</span>
+            Download full CV
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Stella Cherotich</span>
+    <span>Learning Experience Designer · Nairobi, Kenya</span>
+  </footer>
+
+</div><!-- end page-home -->
+
+
+<!-- ═══════════ CASE STUDY: NGO DIGITAL LITERACY ═══════════ -->
+<div id="page-cs-ngo" class="case-study-page">
+  <div class="cs-hero">
+    <button class="cs-back" onclick="showPage('home')">← Back to Portfolio</button>
+    <div class="cs-hero-grid">
+      <div>
+        <span class="cs-tag">Client Work · NGO Partner Programme · 2024</span>
+        <h1>Digital Literacy Programme for Underserved High School Learners</h1>
+        <p>A foundational technology programme designed for high school students with variable device access, minimal prior digital exposure, and limited prior technical familiarity, delivered in partnership with an Italian NGO. Programme success led to multi-year contract renewal and expanded client investment.</p>
+      </div>
+      <div class="cs-details">
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Client</span>
+          <span class="cs-detail-value">Italian NGO (anonymised per NDA)</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Learner Population</span>
+          <span class="cs-detail-value">Underserved high school students, Nairobi</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Delivery Constraints</span>
+          <span class="cs-detail-value">Variable device access, limited connectivity, mixed prior exposure</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Outcome</span>
+          <span class="cs-detail-value">Multi-year contract renewal; expanded programme scope</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-content">
+
+    <div class="cs-section">
+      <h2>The Challenge</h2>
+      <p>Underserved high school learners in this programme faced layered barriers that most curriculum designs do not account for: limited or no access to personal devices outside school, variable connectivity, low confidence with digital tools, and curricula historically designed for learners with far more prior exposure.</p>
+      <p>The NGO's goal was not just to deliver a technology programme. It was to build something that would increase digital confidence, open pathways to STEM careers, and be deliverable consistently at low marginal cost. The curriculum needed to be replicable across cohorts without requiring highly specialised facilitators.</p>
+
+      <h3>Resource constraints I designed around</h3>
+      <ul>
+        <li>Shared devices: activities could not assume individual device ownership</li>
+        <li>Connectivity could not be relied upon for core learning activities</li>
+        <li>Facilitators had varying technical backgrounds, so the curriculum needed to carry the pedagogy, not just the instructor</li>
+        <li>Assessment had to be practical and low-barrier, not exam-dependent</li>
+      </ul>
+    </div>
+
+    <div class="cs-section">
+      <h2>Design Approach</h2>
+
+      <h3>Starting with the learner, not the content</h3>
+      <p>Before designing a single lesson, I mapped what "success" looked like through the learner's eyes: increased confidence using digital tools, understanding of what a career in technology could involve, and at least one tangible thing they had built. Content sequencing followed from that definition, not from a standard technology syllabus.</p>
+
+      <h3>Progressive scaffolding for mixed-prior-knowledge groups</h3>
+      <p>With learners at widely varying starting points in the same room, rigid linear progression breaks down quickly. I designed modular activities with clear extension paths, so a learner who completed the core task quickly could extend into a challenge, while learners who needed more time were not left behind or made to feel that way.</p>
+
+      <h3>Making concepts stick through visible outcomes</h3>
+      <p>Abstract programming concepts are particularly hard to retain when they have no immediate visible application. Every concept introduced in this programme was paired with a small project or visible output within the same session, so learners could see what their code did before moving on.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Impact</h2>
+      <div class="cs-impact-grid">
+        <div class="impact-card">
+          <span class="impact-number">Multi-year</span>
+          <span class="impact-label">Contract renewal: programme quality drove expanded client investment</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">High</span>
+          <span class="impact-label">Stakeholder satisfaction scores across first and second cohorts</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">Scalable</span>
+          <span class="impact-label">Curriculum replicable across cohorts without redesign</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-callout">
+      "Stella's contributions to the Digital Literacy programme were marked by continued excellence. Her efforts contributed to the programme receiving excellent feedback from stakeholders, which led to the contract being both renewed and expanded, a significant achievement that speaks to the quality of her work and her ability to maintain strong partner relationships."
+      <cite>Director of Corporate Training, EdTech Company</cite>
+    </div>
+
+    <div class="cs-section">
+      <h2>What I Would Do Differently</h2>
+      <ul>
+        <li>Build a more structured peer-learning mechanism into early sessions, as learners with more exposure were natural mentors, and that resource was underleveraged</li>
+        <li>Develop an offline-first version of the core activities earlier, rather than adapting reactively when connectivity failed</li>
+        <li>Create a lightweight facilitator guide that captured the specific decisions and improvisations that made early sessions successful, so that knowledge was not lost between cohorts</li>
+      </ul>
+      <p>That last point, capturing the tacit knowledge that makes programmes work and making it accessible to future facilitators, is a design priority I carry into every engagement: the difference between a programme and a system.</p>
+    </div>
+
+  </div>
+
+  <footer style="background:var(--ink);color:rgba(248,244,238,0.55);padding:2rem 5rem;display:flex;justify-content:space-between;font-size:0.75rem;font-family:var(--mono);letter-spacing:0.05em;border-top:1px solid rgba(42,31,26,0.1)">
+    <span>Stella Cherotich / Portfolio</span>
+    <button onclick="showPage('home')" style="background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:0.75rem;cursor:pointer;letter-spacing:0.05em">← Return to Portfolio</button>
+  </footer>
+</div>
+
+
+<!-- ═══════════ CASE STUDY: SOFTWARE ENGINEERING ═══════════ -->
+<div id="page-cs-swe" class="case-study-page">
+  <div class="cs-hero">
+    <button class="cs-back" onclick="showPage('home')">← Back to Portfolio</button>
+    <div class="cs-hero-grid">
+      <div>
+        <span class="cs-tag">Client Work · Curriculum Engineering · 2024–2025</span>
+        <h1>Foundations of Software Engineering: Curriculum Architecture &amp; Iteration</h1>
+        <p>End-to-end curriculum engineering for a beginner technical programme at a Kenyan edtech school. Two full iteration cycles informed by learner performance data and instructor feedback. Recognised internally as a standout piece of programme design.</p>
+      </div>
+      <div class="cs-details">
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Organisation</span>
+          <span class="cs-detail-value">Moringa School, Nairobi (anonymised per NDA)</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Learner Population</span>
+          <span class="cs-detail-value">Absolute beginners; career switchers entering tech</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Programme Duration</span>
+          <span class="cs-detail-value">5-week intensive modular programme</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">My Role</span>
+          <span class="cs-detail-value">Sole curriculum engineer; design, build, and two iteration cycles</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-content">
+
+    <div class="cs-section">
+      <h2>The Problem</h2>
+      <p>Beginner software engineering programmes fail at a predictable set of moments. Week one, when cognitive load is highest and the tooling environment is an obstacle before the learning has even begun. And again in the middle of the programme, when learners have enough knowledge to feel lost but not enough to debug their own confusion.</p>
+      <p>The existing programme had high early dropout and feedback indicating learners felt "thrown in at the deep end." My brief was to redesign the curriculum architecture to reduce that early failure pattern without simplifying the programme to the point of being unrepresentative of what real software engineering involves.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Curriculum Architecture Decisions</h2>
+
+      <h3>Week 1 as a confidence-building investment, not a content sprint</h3>
+      <p>The first week is redesigned to be narrower in content scope and much richer in environment setup support, conceptual framing, and low-stakes practice. Learners who spend Week 1 feeling competent are statistically more likely to persist through Week 3 difficulty spikes, a pattern documented in self-determination theory and confirmed by our own cohort data.</p>
+
+      <h3>Separating "how to write code" from "why this works"</h3>
+      <p>Beginners learn syntax fastest when it is introduced alongside a clear mental model of what is happening, not as an abstract rule to memorise. Every new concept in this curriculum is introduced with an analogy or visual before the first line of code is written.</p>
+
+      <h3>Assessment that produces data, not just grades</h3>
+      <p>Weekly hands-on labs were designed as diagnostic instruments, not just evaluative ones. The rubric for each lab explicitly mapped errors to likely misconceptions, so facilitators could use assessment results to adjust pacing and support, not just to assign marks.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Iteration: From Version 1 to Version 2</h2>
+      <p>After the first cohort completed the programme, I ran a structured feedback analysis: interview data from instructors, completion rates by week, and learner self-assessment scores. Three clear patterns emerged:</p>
+      <ul>
+        <li>Learners reported Week 4 (asynchronous concepts) as the hardest drop-off point: the concept was introduced too abstractly before a practical application</li>
+        <li>Facilitators were improvising analogies that weren't in the curriculum materials, and those needed to be captured and standardised</li>
+        <li>The capstone project rubric was clear on what to submit but unclear on how decisions would be evaluated, creating anxiety rather than reducing it</li>
+      </ul>
+      <p>Version 2 restructured Week 4 to lead with a practical problem, added a facilitator guide with the analogies instructors had found most effective, and revised the capstone rubric to include example "strong response" indicators for each criterion.</p>
+
+      <div class="cs-impact-grid">
+        <div class="impact-card">
+          <span class="impact-number">↑ 23%</span>
+          <span class="impact-label">Improvement in Week 4 completion rate (V1 vs V2)</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">2×</span>
+          <span class="impact-label">Iteration cycles completed and documented</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">↓</span>
+          <span class="impact-label">Facilitator improvisation; reduced delivery variance across instructors</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-callout">
+      "Stella is one of the most consistent people in the team. She goes above and beyond in her work and produces quality work for both B2B clients and B2C products. One of the standout pieces of work is the Foundations of Software Engineering programme which she designed, but also collected and actioned feedback for the second iteration."
+      <cite>Head of Product, EdTech Company</cite>
+    </div>
+
+    <div class="cs-section">
+      <h2>What I Learned</h2>
+      <p>The most valuable design insight from this project was about facilitator knowledge. A significant portion of what makes a curriculum work lives not in the written materials but in the judgment calls instructors make in the room: which analogy to use, when to slow down, how to respond when a learner is stuck. That knowledge is fragile. It walks out the door when an instructor leaves and does not transfer to new cohorts automatically.</p>
+      <p>Building the facilitator guide as a living document, one explicitly designed to capture and update those judgment calls, is now a standard part of how I approach curriculum engineering. It is a knowledge operations problem as much as a learning design problem.</p>
+    </div>
+
+  </div>
+
+  <footer style="background:var(--ink);color:rgba(248,244,238,0.55);padding:2rem 5rem;display:flex;justify-content:space-between;font-size:0.75rem;font-family:var(--mono);letter-spacing:0.05em;border-top:1px solid rgba(42,31,26,0.1)">
+    <span>Stella Cherotich / Portfolio</span>
+    <button onclick="showPage('home')" style="background:none;border:none;color:var(--accent);font-family:var(--mono);font-size:0.75rem;cursor:pointer;letter-spacing:0.05em">← Return to Portfolio</button>
+  </footer>
+</div>
+
+
+<!-- CASE STUDY: DINING IN THE DARK -->
+<div id="page-cs-ditd" class="case-study-page">
+  <div class="cs-hero">
+    <button class="cs-back" onclick="showPage('home')">&#8592; Back to Portfolio</button>
+    <div class="cs-hero-grid">
+      <div>
+        <span class="cs-tag">Community Project / Stakeholder Operations · 2024</span>
+        <h1>Dining in the Dark: Event Operations Tracker and Stakeholder SOP</h1>
+        <p>A high-profile fundraising event run by Global Shapers Nairobi required tight coordination across sponsors, venue partners, caterers, volunteers, and media. I designed the master operations tracker and the stakeholder SOP that kept delivery on track across a six-week run-up and a zero-margin event day.</p>
+      </div>
+      <div class="cs-details">
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Organisation</span>
+          <span class="cs-detail-value">Global Shapers Community, Nairobi Hub</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Event Type</span>
+          <span class="cs-detail-value">Fundraising dinner / community experience event</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">My Role</span>
+          <span class="cs-detail-value">Operations design, master tracker, stakeholder SOP</span>
+        </div>
+        <div class="cs-detail-item">
+          <span class="cs-detail-label">Competencies Demonstrated</span>
+          <span class="cs-detail-value">Knowledge capture, project management, stakeholder coordination, SOP design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-content">
+
+    <div class="cs-section">
+      <h2>The Context</h2>
+      <p>Dining in the Dark is a sensory dining experience where guests eat blindfolded, guided by visually impaired hosts. For Global Shapers Nairobi, the event served two purposes: raising funds for a community cause and building awareness of disability inclusion in public life. It required everything to work: the wrong meal served to the wrong guest in the wrong order in a pitch-dark room is not a minor inconvenience.</p>
+      <p>The coordination challenge was significant. We had external sponsors with deliverable commitments, a venue partner with specific setup requirements, a catering team who needed precise timelines, visually impaired facilitators who needed thorough orientation, media coverage to manage, and a volunteer team with varying experience. All of this needed to come together on a single evening with no real room for improvisation.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>The Master Tracker</h2>
+      <p>The core tool I built was a master event operations tracker that served as the single source of truth across the planning period. Rather than managing coordination through Slack threads and email chains, everything lived in one document that the full organising team could read and update.</p>
+
+      <h3>What the tracker covered</h3>
+      <ul>
+        <li>All deliverables by workstream (venue, catering, sponsorship, volunteer management, media, guest experience) with owner, due date, and status</li>
+        <li>A dependency map showing which tasks blocked others, so delays were visible before they cascaded</li>
+        <li>A budget tracking tab linked to procurement timelines</li>
+        <li>A guest list and dietary requirements matrix, updated in real time as RSVPs came in</li>
+        <li>A day-of run sheet with timestamped cues for each team lead</li>
+      </ul>
+
+      <div class="artifact-preview">
+        <span class="artifact-label">Tracker Structure: Workstream Overview</span>
+        <div class="artifact-content">DINING IN THE DARK — OPERATIONS TRACKER
+Global Shapers Nairobi Hub · 2024
+
+WORKSTREAMS AND OWNERS
+────────────────────────────────────────
+  Venue &amp; Setup        Lead: [Name]     Status tracker tab: VENUE
+  Catering             Lead: [Name]     Status tracker tab: FOOD
+  Guest Experience     Lead: [Name]     Status tracker tab: GUESTS
+  Sponsorship          Lead: [Name]     Status tracker tab: SPONSORS
+  Volunteer Mgmt       Lead: [Name]     Status tracker tab: VOLUNTEERS
+  Media &amp; Comms        Lead: [Name]     Status tracker tab: MEDIA
+
+MASTER TIMELINE (extract)
+────────────────────────────────────────
+  T-6 weeks   Confirm venue booking + layout sign-off
+  T-5 weeks   Sponsor deliverables confirmed in writing
+  T-4 weeks   Catering brief finalised; dietary matrix seeded
+  T-3 weeks   Guest list closed; seating plan drafted
+  T-2 weeks   Volunteer briefing + run-through
+  T-1 week    Day-of packs prepared for all leads
+  T-3 days    Final dietary matrix to catering; no further changes
+  T-1 day     Venue setup inspection; tech check
+  Day-of      Run sheet (see below) governs all timing
+
+DAY-OF RUN SHEET (extract)
+────────────────────────────────────────
+  17:30   Volunteer team arrives; venue setup complete check
+  18:00   Guest arrival begins; welcome drinks + briefing
+  18:30   Blindfolds on; guests escorted to tables
+  18:35   Starter service begins (Course 1)
+  19:15   Course 2 service begins
+  20:00   Dessert + close; blindfolds removed
+  20:15   Media moment; group photo
+  20:30   Open floor; programme close
+
+  LEAD CUES: each workstream lead has a printed cue card
+  with their time points and escalation contact.
+        </div>
+      </div>
+
+      <h3>Why this structure worked</h3>
+      <ul>
+        <li><strong>Single source of truth:</strong> No one was working from a stale version. Updates in the tracker were the official record.</li>
+        <li><strong>Visibility for the whole team:</strong> Any organiser could see at a glance what was on track, what was at risk, and who owned what. That transparency reduced the number of check-in meetings needed.</li>
+        <li><strong>Dependency mapping:</strong> The dietary matrix going to catering could not happen until the guest list was closed. Making that dependency explicit meant the guest-list deadline was treated seriously, not as a soft target.</li>
+      </ul>
+    </div>
+
+    <div class="cs-section">
+      <h2>The Stakeholder SOP</h2>
+      <p>External partners (sponsors and the venue) needed a clear reference document that told them exactly what we needed from them, by when, in what format, and who to contact when things changed. A generic event brief was not sufficient. I designed a short SOP-style document for each external stakeholder that made their specific obligations explicit and gave them the escalation path if they ran into problems.</p>
+
+      <h3>What the stakeholder SOP covered per partner</h3>
+      <ul>
+        <li>Their specific deliverables with hard deadlines</li>
+        <li>Format and delivery instructions for each item</li>
+        <li>What "confirmed" meant in each case and how they would know</li>
+        <li>A single named contact on our side for that workstream</li>
+        <li>What to do if a deliverable was going to be late or changed</li>
+      </ul>
+      <p>This reduced the number of last-minute clarification calls significantly and meant that when a sponsor did need to change a deliverable close to the event, the escalation path was already known. No one was trying to find the right person to call at T-minus two days.</p>
+    </div>
+
+    <div class="cs-section">
+      <h2>Outcome</h2>
+      <div class="cs-impact-grid">
+        <div class="impact-card">
+          <span class="impact-number">On time</span>
+          <span class="impact-label">Event delivered on schedule with no critical coordination failures</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">Multi-partner</span>
+          <span class="impact-label">Sponsors, venue, caterers, media, and volunteers coordinated from one tracker</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number">Reusable</span>
+          <span class="impact-label">Tracker and SOP templates retained for future Hub events</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section">
+      <h2>What This Demonstrates</h2>
+      <p>This project sits outside my formal L&amp;D work but it is directly relevant to knowledge operations roles. The skills involved are the same: capturing tacit coordination knowledge into structured, usable documents; designing for a diverse stakeholder group with different information needs; making dependencies visible before they become problems; and producing tools that outlast the individual event and become institutional assets.</p>
+      <p>An operational SOP for a field supervisor and a stakeholder pack for an event sponsor are different documents for different audiences. The design thinking behind them is the same.</p>
+    </div>
+
+  </div>
+
+  <footer style="background:var(--ink);color:rgba(248,244,238,0.55);padding:2rem 5rem;display:flex;justify-content:space-between;font-size:0.75rem;font-family:var(--mono);letter-spacing:0.05em;border-top:1px solid rgba(42,31,26,0.1)">
+    <span>Stella Cherotich / Portfolio</span>
+    <button onclick="showPage('home')" style="background:none;border:none;color:var(--accent-light);font-family:var(--mono);font-size:0.75rem;cursor:pointer;letter-spacing:0.05em">&#8592; Return to Portfolio</button>
+  </footer>
+</div>
+
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('#page-home, .case-study-page').forEach(el => {
+      el.style.display = 'none';
+    });
+    if (name === 'home') {
+      document.getElementById('page-home').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById('page-' + name);
+      if (el) {
+        el.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  }
+
+  function openCase(name) {
+    showPage(name);
+  }
+
+  // Intersection observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .case-row, .process-step, .testimonial-card, .exp-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
