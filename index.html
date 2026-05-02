@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stella Cherotich, Learning Experience Designer</title>
+<title>Stella Cherotich</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
@@ -968,30 +968,123 @@
   .fade-in-4 { animation-delay: 0.55s; }
 
   /* ── RESPONSIVE ── */
+  /* ── HAMBURGER TOGGLE ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.25s ease;
+    transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── TABLET: 768px and below ── */
   @media (max-width: 900px) {
+    /* Nav */
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.25rem; }
-    section { padding: 5rem 2rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--paper);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 150;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+    }
+    .cv-link {
+      border: 1px solid var(--ink);
+      padding: 0.6rem 1.5rem !important;
+    }
+
+    /* Layout */
+    section { padding: 5rem 1.5rem; }
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 8rem 2rem 3rem; }
+    .hero-left { padding: 7rem 1.5rem 3rem; }
     .hero-right { display: none; }
-    .positioning { padding: 4rem 2rem; }
+    .positioning { padding: 4rem 1.5rem; }
     .positioning-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
     .case-row { grid-template-columns: 1fr; }
     .case-meta { border-right: none; padding: 1.5rem 0 0; }
     .case-body { padding: 1rem 0; border-right: none; }
     .case-tags-col { padding: 0 0 1.5rem; flex-direction: row; }
     .process-steps { grid-template-columns: 1fr 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .exp-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .exp-row { grid-template-columns: 1fr; gap: 0.25rem; }
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
-    .cs-hero { padding: 8rem 2rem 4rem; }
-    .cs-back { left: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 1.5rem; }
+    .cs-hero { padding: 7rem 1.5rem 4rem; }
+    .cs-back { left: 1.5rem; top: 5rem; }
     .cs-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .cs-content { padding: 3rem 2rem 5rem; }
+    .cs-content { padding: 2.5rem 1.5rem 5rem; }
     .cs-impact-grid { grid-template-columns: 1fr 1fr; }
+    .artifact-content { font-size: 0.72rem; }
+  }
+
+  /* ── MOBILE: 480px and below ── */
+  @media (max-width: 480px) {
+    section { padding: 4rem 1.25rem; }
+    .hero-left { padding: 6rem 1.25rem 2.5rem; }
+    .positioning { padding: 3rem 1.25rem; }
+
+    /* Typography scale down */
+    .hero h1 { font-size: 2.2rem; }
+    .hero-sub { font-size: 0.92rem; }
+    .hero-tag { font-size: 0.62rem; }
+
+    /* Single column everything */
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .cs-impact-grid { grid-template-columns: 1fr; }
+    .hero-cta { flex-direction: column; gap: 0.75rem; }
+    .btn-primary, .btn-secondary { text-align: center; padding: 0.85rem 1.5rem; }
+
+    /* Case rows */
+    .case-title { font-size: 1.1rem; }
+    .case-desc { font-size: 0.82rem; }
+
+    /* Artifact blocks: allow horizontal scroll rather than overflow */
+    .artifact-preview { padding: 2rem 1.25rem; overflow-x: auto; }
+    .artifact-content { font-size: 0.68rem; white-space: pre; min-width: 520px; }
+
+    /* Contact */
+    .contact { padding: 4rem 1.25rem; }
+    .contact-inner { gap: 2rem; }
+
+    /* CS pages */
+    .cs-hero { padding: 6rem 1.25rem 3rem; }
+    .cs-back { left: 1.25rem; top: 4.5rem; font-size: 0.62rem; }
+    .cs-content { padding: 2rem 1.25rem 4rem; }
+    .cs-section h2 { font-size: 1.3rem; }
+    .cs-hero h1 { font-size: 1.7rem; }
+
+    /* Stat panel tags wrap cleanly */
+    .hero-domain-tags { gap: 0.4rem; }
+    .tag { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
+
+    /* Footer */
+    footer { padding: 1.25rem; font-size: 0.68rem; }
   }
 </style>
 </head>
@@ -1000,11 +1093,14 @@
 <!-- NAVIGATION -->
 <nav id="main-nav">
   <a href="#home" class="nav-logo" onclick="showPage('home')">Stella Cherotich</a>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about" onclick="showPage('home'); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),100)">About</a></li>
     <li><a href="#work" onclick="showPage('home'); setTimeout(()=>document.getElementById('work').scrollIntoView({behavior:'smooth'}),100)">Work</a></li>
     <li><a href="#contact" onclick="showPage('home'); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100)">Contact</a></li>
-    <li><a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank">CV →</a></li>
+    <li><a href="https://drive.google.com/file/d/1AP_MQlbsx4YxiLIKUdm75CMhjlfpXlIt/view?usp=sharing" target="_blank" class="cv-link">Download CV</a></li>
   </ul>
 </nav>
 
@@ -1023,7 +1119,7 @@
       </p>
       <div class="hero-cta fade-in fade-in-4">
         <a href="#work" class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">See My Work</a>
-        <a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank" class="btn-secondary">Download CV</a>
+        <a href="https://drive.google.com/file/d/1AP_MQlbsx4YxiLIKUdm75CMhjlfpXlIt/view?usp=sharing" target="_blank" class="btn-secondary">Download CV</a>
       </div>
     </div>
     <div class="hero-right">
@@ -1244,15 +1340,7 @@
         <div class="exp-body">
           <h3>Curriculum Engineer (Intern)</h3>
           <span class="exp-org">AfterWork · Nairobi, Kenya</span>
-          <p>Designed and facilitated data-focused learning programmes. Used learner feedback and performance data to iterate on engagement and outcomes across community workshops.</p>
-        </div>
-      </div>
-      <div class="exp-row">
-        <span class="exp-period">Jul 2023 – Jan 2024</span>
-        <div class="exp-body">
-          <h3>Operations &amp; Data Consultant</h3>
-          <span class="exp-org">Freelance</span>
-          <p>Supported organisations in improving operational efficiency through data analysis, process optimisation, and documentation. Built early SOP and reporting frameworks for small operational teams.</p>
+          <p>Designed and standardised training materials for data courses, creating facilitator guides that established a delivery benchmark for future instructors. Facilitated community workshops using adult learning principles; achieved 9.3/10 satisfaction across sessions.</p>
         </div>
       </div>
       <div class="exp-row">
@@ -1260,23 +1348,23 @@
         <div class="exp-body">
           <h3>Assistant English Instructor</h3>
           <span class="exp-org">LBE Japan</span>
-          <p>Facilitated cross-cultural learning experiences in a multilingual classroom environment. Developed differentiated materials for learners at varying proficiency levels.</p>
+          <p>Facilitated cross-cultural learning for 35+ students across varied proficiency levels. Designed lesson plans aligned with language benchmarks; 80% of students met their target goals by programme end.</p>
         </div>
       </div>
       <div class="exp-row">
-        <span class="exp-period">Ongoing</span>
+        <span class="exp-period">Apr 2026 – Ongoing</span>
         <div class="exp-body">
-          <h3>Product Management Course</h3>
+          <h3>Product Management</h3>
           <span class="exp-org">Zindua School · Nairobi, Kenya</span>
-          <p>Pursuing formal product management training covering product strategy, roadmapping, stakeholder alignment, and delivery frameworks. Applied directly to product ownership responsibilities across the Moringa curriculum portfolio.</p>
+          <p>Structured product thinking including stakeholder mapping, programme lifecycle management, and prioritisation frameworks, applied directly to curriculum product ownership at Moringa.</p>
         </div>
       </div>
       <div class="exp-row">
-        <span class="exp-period">Ongoing</span>
+        <span class="exp-period">2026 – Ongoing</span>
         <div class="exp-body">
           <h3>Postgraduate Diploma in Learning Design &amp; Technology</h3>
           <span class="exp-org">Open University of Kenya (OUK)</span>
-          <p>Formal postgraduate study in instructional design theory, e-learning development, and educational technology, applied directly to current professional practice.</p>
+          <p>Advanced study in instructional design, digital pedagogy, e-learning development, and educational research, applied directly to curriculum engineering practice.</p>
         </div>
       </div>
     </div>
@@ -1297,7 +1385,7 @@
             linkedin.com/in/stella-cherotich
           </div>
         </a>
-        <a href="https://drive.google.com/file/d/1hCLI6YUm7pUQbM93L1veCV_TxOkbjt_d/view" target="_blank" class="contact-link">
+        <a href="https://drive.google.com/file/d/1AP_MQlbsx4YxiLIKUdm75CMhjlfpXlIt/view?usp=sharing" target="_blank" class="contact-link">
           <div>
             <span class="contact-link-label">Curriculum Vitae</span>
             Download full CV
@@ -1701,6 +1789,23 @@ DAY-OF RUN SHEET (extract)
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
+  });
+
+  // Hamburger menu
+  const toggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
 </script>
 
