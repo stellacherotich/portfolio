@@ -1137,14 +1137,14 @@
 
 <!-- NAVIGATION -->
 <nav id="main-nav">
-  <a href="#home" class="nav-logo" onclick="showPage('home')">Stella Cherotich</a>
+  <a href="#home" class="nav-logo">Stella Cherotich</a>
   <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#about" onclick="showPage('home'); setTimeout(()=>document.getElementById('about').scrollIntoView({behavior:'smooth'}),100)">About</a></li>
-    <li><a href="#work" onclick="showPage('home'); setTimeout(()=>document.getElementById('work').scrollIntoView({behavior:'smooth'}),100)">Work</a></li>
-    <li><a href="#contact" onclick="showPage('home'); setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100)">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li><a href="https://drive.google.com/file/d/1mIuYiNOHIaGUzwUCdqyad_g1tbSYooUC/view?usp=sharing" target="_blank" class="cv-link">Download CV</a></li>
   </ul>
 </nav>
@@ -1254,16 +1254,15 @@
   <section class="work" id="work">
     <span class="section-label">Selected work</span>
     <h2>Case <em>Studies</em></h2>
-    <div class="work-grid">
-
-      <a class="case-row" onclick="openCase('cs-ditd'); return false;" href="#">
+    <div class="work-grid" id="work-grid">
+      <a class="case-row" href="/work/dining-in-the-dark-event-ops-tracker/">
         <div class="case-meta">
           <span class="case-year">2024</span>
           <span class="case-client">Global Shapers Nairobi</span>
         </div>
         <div class="case-body">
           <div class="case-title">Dining in the Dark: Event Operations Tracker and Stakeholder SOP</div>
-          <p class="case-desc">Designed and managed a master event tracker and operational SOP for a high-profile community fundraiser. Covered multi-stakeholder coordination, venue logistics, procurement timelines, and day-of delivery. Demonstrates knowledge capture and project management applied to a time-critical, zero-margin-for-error operational context.</p>
+          <p class="case-desc">Designed and managed a master event tracker and operational SOP for a high-profile community fundraiser.</p>
         </div>
         <div class="case-tags-col">
           <div class="case-tags">
@@ -1271,48 +1270,45 @@
             <span class="tag">SOP Design</span>
             <span class="tag dark">Stakeholder Ops</span>
           </div>
-          <span class="case-arrow">&#8594;</span>
+          <span class="case-arrow">→</span>
         </div>
       </a>
-
-      <a class="case-row" onclick="openCase('cs-ngo'); return false;" href="#">
+      <a class="case-row" href="/work/digital-literacy-programme/">
         <div class="case-meta">
           <span class="case-year">2024</span>
           <span class="case-client">Italian NGO Partner</span>
         </div>
         <div class="case-body">
           <div class="case-title">Digital Literacy Programme for Underserved High School Learners</div>
-          <p class="case-desc">A foundational technology programme designed for underserved youth with variable device access and limited prior digital exposure. Programme success drove a multi-year contract renewal and expanded client investment, demonstrating impact in resource-constrained, community-facing delivery contexts.</p>
+          <p class="case-desc">A foundational technology programme designed for underserved youth with variable device access and limited prior digital exposure.</p>
         </div>
         <div class="case-tags-col">
           <div class="case-tags">
             <span class="tag">NGO Client</span>
             <span class="tag">Community Impact</span>
-            <span class="tag">LX Design</span>
+            <span class="tag dark">LX Design</span>
           </div>
           <span class="case-arrow">→</span>
         </div>
       </a>
-
-      <a class="case-row" onclick="openCase('cs-swe'); return false;" href="#">
+      <a class="case-row" href="/work/foundations-software-engineering/">
         <div class="case-meta">
-          <span class="case-year">2024–2025</span>
+          <span class="case-year">2024-2025</span>
           <span class="case-client">EdTech / Moringa School</span>
         </div>
         <div class="case-body">
-          <div class="case-title">Foundations of Software Engineering: Curriculum Engineering &amp; Iteration</div>
-          <p class="case-desc">End-to-end curriculum architecture for a beginner technical programme. Includes needs analysis, learning outcome design, cognitive-load reduction strategy, assessment design, and two full iteration cycles informed by learner performance data and instructor feedback.</p>
+          <div class="case-title">Foundations of Software Engineering: Curriculum Architecture and Iteration</div>
+          <p class="case-desc">End-to-end curriculum engineering for a beginner technical programme with two iteration cycles informed by learner data.</p>
         </div>
         <div class="case-tags-col">
           <div class="case-tags">
             <span class="tag">Curriculum Eng.</span>
             <span class="tag">Data-Informed</span>
-            <span class="tag">Iteration</span>
+            <span class="tag dark">Iteration</span>
           </div>
           <span class="case-arrow">→</span>
         </div>
       </a>
-
     </div>
   </section>
 
@@ -1798,7 +1794,69 @@ DAY-OF RUN SHEET (extract)
 </div>
 
 
+<script src="/data/projects.js"></script>
 <script>
+  const workGrid = document.getElementById('work-grid');
+  if (workGrid && Array.isArray(window.PROJECTS)) {
+    const fragment = document.createDocumentFragment();
+
+    window.PROJECTS.forEach((project) => {
+      const row = document.createElement('a');
+      row.className = 'case-row';
+      row.href = `/work/${encodeURIComponent(String(project.slug || ''))}/`;
+
+      const meta = document.createElement('div');
+      meta.className = 'case-meta';
+
+      const year = document.createElement('span');
+      year.className = 'case-year';
+      year.textContent = String(project.year || '');
+
+      const client = document.createElement('span');
+      client.className = 'case-client';
+      client.textContent = String(project.client || '');
+
+      meta.append(year, client);
+
+      const body = document.createElement('div');
+      body.className = 'case-body';
+
+      const title = document.createElement('div');
+      title.className = 'case-title';
+      title.textContent = String(project.title || '');
+
+      const summary = document.createElement('p');
+      summary.className = 'case-desc';
+      summary.textContent = String(project.summary || '');
+
+      body.append(title, summary);
+
+      const tagsCol = document.createElement('div');
+      tagsCol.className = 'case-tags-col';
+
+      const tags = document.createElement('div');
+      tags.className = 'case-tags';
+
+      const safeTags = Array.isArray(project.tags) ? project.tags : [];
+      safeTags.forEach((tag, index) => {
+        const tagEl = document.createElement('span');
+        tagEl.className = index === safeTags.length - 1 ? 'tag dark' : 'tag';
+        tagEl.textContent = String(tag || '');
+        tags.appendChild(tagEl);
+      });
+
+      const arrow = document.createElement('span');
+      arrow.className = 'case-arrow';
+      arrow.textContent = '→';
+
+      tagsCol.append(tags, arrow);
+      row.append(meta, body, tagsCol);
+      fragment.appendChild(row);
+    });
+
+    workGrid.replaceChildren(fragment);
+  }
+
   function showPage(name) {
     document.querySelectorAll('#page-home, .case-study-page').forEach(el => {
       el.style.display = 'none';
