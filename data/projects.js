@@ -1,5 +1,37 @@
 window.PROJECTS = [
   {
+    slug: 'ask-before-you-advise',
+    title: 'Ask Before You Advise: A Mobile-Friendly Module for Financial Advisers',
+    year: '2026',
+    client: 'Portfolio project (fictional insurer)',
+    summary: 'A five-minute self-paced module, built in Articulate Rise 360 and packaged as SCORM 1.2, that teaches an Ask, Probe, Confirm routine for first client meetings.',
+    problemStatement: 'When advisers pitch early, clients lose trust and often end up with cover they do not need. Advisers need a routine for finding the main protection need before they recommend any product.',
+    solution: 'Designed a short module around one learning outcome, with three objectives written using Bloom verbs, and practice that moves from recognising question types to making decisions in a client scenario.',
+    image: '/images/work/ask-before-you-advise-hero.jpg',
+    ogImage: '/images/work/ask-before-you-advise-og.jpg',
+    tags: ['Rise 360', 'SCORM 1.2', 'Scenario-Based'],
+    links: [
+      { label: 'Open the module', href: '/ask-before-you-advise/', external: true }
+    ],
+    details: {
+      context: [
+        'The module uses a fictional insurer, Msingi Life, and a fictional client, Grace Wambui, so it contains no real company content and is safe to share publicly.',
+        'The learning outcome: apply the Ask, Probe, Confirm routine in first meetings with clients to identify their main protection need before recommending any product.'
+      ],
+      impact: [
+        { value: 'SCORM 1.2', label: 'Exported as a SCORM package and tested in SCORM Cloud' },
+        { value: '3 decisions', label: 'Scenario with feedback on every option, including the wrong ones' },
+        { value: '5 minutes', label: 'Designed for phones, with a tap alternative to dragging' }
+      ],
+      approach: [
+        'Taught the routine as a three-step process: ask an open question, probe by following the client\'s own words, and confirm by playing the priority back.',
+        'Compared open, closed and leading questions in tabs, then had learners sort six questions into the right group.',
+        'Built a three-decision scenario in which each wrong option explains why it falls short, for example that a product pitch is premature before the detail is known.',
+        'Closed with a four-question knowledge check and checked heading order, alt text and colour-independent meaning before export.'
+      ]
+    }
+  },
+  {
     slug: 'dining-in-the-dark-event-ops-tracker',
     title: 'Dining in the Dark: Event Operations Tracker and Stakeholder SOP',
     year: '2024',

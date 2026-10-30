@@ -55,6 +55,7 @@
             <span class="cs-tag">Case Study · ${project.year}</span>
             <h1>${project.title}</h1>
             <p>${project.summary}</p>
+            ${(project.links || []).map((l) => `<a class="cs-link" href="${l.href}"${l.external ? ' target="_blank" rel="noopener"' : ''}>${l.label}</a>`).join('')}
           </div>
           <div class="cs-details">
             <div class="cs-detail-item"><span class="cs-detail-label">Client</span><span class="cs-detail-value">${project.client}</span></div>
