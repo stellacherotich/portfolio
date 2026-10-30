@@ -68,3 +68,4 @@ footer.site{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--sof
 footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .site-nav .wrap{max-width:62rem}
+.goals{margin:0 0 0;padding-left:1.25rem}.goals li{padding:.15rem 0 .15rem .3rem}.goals li::marker{color:var(--clay)}
