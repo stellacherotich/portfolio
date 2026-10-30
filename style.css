@@ -7,7 +7,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:5rem;-webkit-text-size-adjust:100%;color-scheme:light}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 1.125rem/1.7 var(--sans);-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.2;margin:0 0 .5em;letter-spacing:-.01em}
-h1{font-size:clamp(2.1rem,5.2vw,3.4rem);max-width:18ch}
+h1{font-size:clamp(1.7rem,4vw,2.6rem);max-width:30ch;line-height:1.25}
 h2{font-size:clamp(1.5rem,3vw,1.9rem);color:var(--ink)}
 h3{font-size:1.15rem}
 p{margin:0 0 1em;max-width:60ch}
