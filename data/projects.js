@@ -41,7 +41,7 @@ window.PROJECTS = [
     solution: 'Designed a seven-module course with a stated learner outcome for each module, one fictional case study that runs through all of them, and practice that matches each skill, then built it in Rise 360.',
     tags: ['Rise 360', 'Course Design', 'Product Management'],
     links: [
-      { label: 'Open the course', href: 'https://share.eu.articulate.com/ckSmaccVA81xCy2QIeg3-', external: true },
+      { label: 'Open the course', href: '/introduction-to-product-management/', external: true },
       { label: 'Read the content sheet (PDF)', href: '/work/introduction-to-product-management/content-sheet.pdf', external: true }
     ],
     details: {
