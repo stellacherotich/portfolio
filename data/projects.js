@@ -32,6 +32,37 @@ window.PROJECTS = [
     }
   },
   {
+    slug: 'introduction-to-product-management',
+    title: 'Introduction to Product Management: A Seven-Module Course',
+    year: '2026',
+    client: 'Portfolio project',
+    summary: 'A seven-module, self-paced course in Articulate Rise 360 that takes career changers from what a product manager does to using AI responsibly, built around one running case study.',
+    problemStatement: 'Career changers and junior associates who want to move into product management often have no formal experience and no clear path through the basics, from discovery to launch.',
+    solution: 'Designed a seven-module course with a stated learner outcome for each module, one fictional case study that runs through all of them, and practice that matches each skill, then built it in Rise 360.',
+    tags: ['Rise 360', 'Course Design', 'Product Management'],
+    links: [
+      { label: 'Open the course', href: 'https://share.eu.articulate.com/ckSmaccVA81xCy2QIeg3-', external: true },
+      { label: 'Read the content sheet (PDF)', href: '/work/introduction-to-product-management/content-sheet.pdf', external: true }
+    ],
+    details: {
+      context: [
+        'The audience is career changers, junior associates and aspiring product managers with no formal PM experience. There are no prerequisites, and the course is self-paced, planned at about seven hours across seven modules.',
+        'The running case study is Mwangaza, a fictional learning app for Kenyan secondary students. It means the course uses no real company content and is safe to share publicly.'
+      ],
+      impact: [
+        { value: '7 modules', label: 'From the PM role through discovery, prioritisation and delivery to metrics, launch and AI' },
+        { value: '1 case study', label: 'Mwangaza appears in every module so each concept builds on the same story' },
+        { value: '80% to pass', label: 'Completion rule in the plan: view all lessons and score 80% or higher on the final assessment' }
+      ],
+      approach: [
+        'Started with a learner outcome for each module, such as writing a user story with acceptance criteria or choosing a north star metric.',
+        'Planned every screen in a content sheet that lists the Rise block, on-screen text, alt text and interaction, so the build and the accessibility checks follow one document.',
+        'Matched the interaction to the skill: sorting activities for judging interview questions and prompts, scenarios for decisions such as a scope change mid-sprint, and tabs, accordions and flashcards for reference content.',
+        'Closed with a module on using AI as a product manager, including how to check AI output before acting on it.'
+      ]
+    }
+  },
+  {
     slug: 'dining-in-the-dark-event-ops-tracker',
     title: 'Dining in the Dark: Event Operations Tracker and Stakeholder SOP',
     year: '2024',

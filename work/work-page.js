@@ -31,11 +31,11 @@
   setMetaTag('property', 'og:description', description);
   setMetaTag('property', 'og:type', 'article');
   setMetaTag('property', 'og:url', canonical);
-  setMetaTag('property', 'og:image', `${window.location.origin}${project.ogImage}`);
-  setMetaTag('name', 'twitter:card', 'summary_large_image');
+  if (project.ogImage) setMetaTag('property', 'og:image', `${window.location.origin}${project.ogImage}`);
+  setMetaTag('name', 'twitter:card', project.ogImage ? 'summary_large_image' : 'summary');
   setMetaTag('name', 'twitter:title', pageTitle);
   setMetaTag('name', 'twitter:description', description);
-  setMetaTag('name', 'twitter:image', `${window.location.origin}${project.ogImage}`);
+  if (project.ogImage) setMetaTag('name', 'twitter:image', `${window.location.origin}${project.ogImage}`);
 
   let canonicalLink = document.head.querySelector('link[rel="canonical"]');
   if (!canonicalLink) {
