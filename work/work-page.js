@@ -14,10 +14,38 @@
     meta.setAttribute('content', value);
   };
 
+
+  const navHtml = `
+    <a class="skip" href="#case-study-root">Skip to content</a>
+    <header class="site-nav" id="main-nav"><div class="wrap">
+      <a href="/" class="brand">Stella Cherotich</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#work">Work</a></li>
+        <li><a href="/#education">Education</a></li>
+        <li><a href="/#community">Community</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a class="cv" href="/Stella-Cherotich-Kitur-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </div></header>`;
+  const addNav = () => {
+    if (document.getElementById('main-nav')) return;
+    document.body.insertAdjacentHTML('afterbegin', navHtml);
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    const setMenu = (open) => { links.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  };
+  addNav();
+
   if (!project) {
     document.title = `Project Not Found | ${siteTitle}`;
     const root = document.getElementById('case-study-root');
-    root.innerHTML = '<section class="not-found"><h1>Project not found</h1><p>The case study you requested does not exist.</p><a href="/#work">Back to Projects</a></section>';
+    root.innerHTML = '<section class="not-found"><h1>Project not found</h1><p>The case study you requested does not exist.</p><a href="/#projects">Back to Projects</a></section>';
     return;
   }
 
@@ -49,7 +77,7 @@
   root.innerHTML = `
     <main class="case-study-page visible">
       <section class="cs-hero">
-        <a class="cs-back" href="/#work">&larr; Back to Projects</a>
+        <a class="cs-back" href="/#projects">&larr; Back to Projects</a>
         <div class="cs-hero-grid">
           <div>
             <span class="cs-tag">Case Study · ${project.year}</span>
