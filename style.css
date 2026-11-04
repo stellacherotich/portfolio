@@ -42,7 +42,8 @@ a:hover{color:var(--olive);text-decoration-thickness:2px}
 @media(min-width:800px){.portrait-wrap{max-width:none}}
 .portrait{margin:0;background:var(--sage);border:2px solid var(--ink);border-radius:1.25rem;overflow:hidden;box-shadow:6px 6px 0 var(--olive)}
 .portrait img{display:block;width:100%;height:auto}
-.sticker{position:absolute;top:-1.9rem;right:-1.2rem;width:4.75rem;height:4.75rem;transform:rotate(10deg)}
+.sticker{position:absolute;top:-1.9rem;right:-1.2rem;width:4.75rem;height:4.75rem;transform:rotate(10deg);animation:sticker-spin 40s linear infinite}
+@keyframes sticker-spin{from{transform:rotate(10deg)}to{transform:rotate(370deg)}}
 .hl{background:linear-gradient(transparent 60%,var(--sage) 60% 92%,transparent 92%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .results{list-style:none;margin:2.75rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 1.25rem}
 .results li{display:flex;flex-direction:column;padding:.8rem 1.25rem;background:var(--sage);border:2px solid var(--ink);border-radius:1rem;transform:rotate(-.5deg)}
@@ -87,7 +88,7 @@ blockquote footer b{color:var(--ink);font-weight:600}
 .contact-list li{padding:.25rem 0}
 footer.site{padding:2rem 0 2.5rem;background:var(--ink);border-top:5px solid var(--clay);color:var(--paper);font-size:.95rem}
 footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 .site-nav .wrap{max-width:62rem}
 .goals{margin:0 0 0;padding-left:1.25rem}.goals li{padding:.15rem 0 .15rem .3rem}.goals li::marker{color:var(--clay)}
 .contact{background:rgba(246,223,156,.3)}
