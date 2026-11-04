@@ -14,8 +14,10 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="sunflower" viewBox="0 0 100 100"><g fill="#D98E04"><ellipse cx="50" cy="19" rx="8.5" ry="17"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(30 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(60 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(90 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(120 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(150 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(180 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(210 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(240 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(270 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(300 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="19" fill="#8A5600"/><circle cx="50" cy="50" r="19" fill="none" stroke="#17301F" stroke-width="3"/></symbol></svg>
+
 <header class="site-nav" id="main-nav"><div class="wrap">
-  <a href="#home" class="brand">Stella Cherotich</a>
+  <a href="#home" class="brand"><svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#sunflower"/></svg>Stella Cherotich</a>
   <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
@@ -33,11 +35,14 @@
 <section class="hero" id="home"><div class="wrap">
   <div class="hero-grid">
     <div class="hero-text">
-      <h1>Hi, I'm Stella, a learning experience designer based in Nairobi, Kenya, where I design learning that people can use on the job.</h1>
+      <h1>Hi, I'm Stella, a learning experience designer based in Nairobi, Kenya, where I design <span class="hl">learning that people can use on the job.</span></h1>
       <p class="lede">I create inclusive and accessible learning experiences that help teams learn and do their work well. I'm a Certified Assistive Technology Instructional Specialist, so accessibility goes into the first draft. I'm also Vice Curator of the Global Shapers Nairobi Hub.</p>
       <div class="actions"><a class="btn" href="#services">See how I can help</a><a href="#projects">View my projects</a></div>
     </div>
-    <figure class="portrait"><img src="/images/stella-cherotich.webp" width="720" height="580" alt="Portrait of Stella Cherotich, smiling" fetchpriority="high"></figure>
+    <div class="portrait-wrap">
+      <figure class="portrait"><img src="/images/stella-cherotich.webp" width="720" height="580" alt="Portrait of Stella Cherotich, smiling" fetchpriority="high"></figure>
+      <svg class="sticker" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#sunflower"/></svg>
+    </div>
   </div>
   <ul class="results" aria-label="Results so far">
     <li><b>6+</b><span>programmes shipped end to end</span></li>
