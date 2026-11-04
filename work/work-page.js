@@ -18,14 +18,13 @@
   const navHtml = `
     <a class="skip" href="#case-study-root">Skip to content</a>
     <header class="site-nav" id="main-nav"><div class="wrap">
-      <a href="/" class="brand">Stella Cherotich</a>
+      <a href="/" class="brand"><svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g fill="#D98E04"><ellipse cx="50" cy="19" rx="8.5" ry="17"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(30 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(60 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(90 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(120 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(150 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(180 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(210 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(240 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(270 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(300 50 50)"/><ellipse cx="50" cy="19" rx="8.5" ry="17" transform="rotate(330 50 50)"/></g><circle cx="50" cy="50" r="19" fill="#8A5600"/><circle cx="50" cy="50" r="19" fill="none" stroke="#17301F" stroke-width="3"/></svg>Stella Cherotich</a>
       <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="/#about">About</a></li>
+        <li><a href="/#services">Services</a></li>
         <li><a href="/#projects">Projects</a></li>
-        <li><a href="/#work">Work</a></li>
-        <li><a href="/#education">Education</a></li>
-        <li><a href="/#community">Community</a></li>
+        <li><a href="/#work">Experience</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a class="cv" href="/Stella-Cherotich-Kitur-CV.pdf" target="_blank" rel="noopener">CV</a></li>
       </ul>
