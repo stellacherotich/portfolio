@@ -40,24 +40,30 @@
 
 <main id="main">
 <section class="block checklist-page"><div class="wrap">
+  <a class="back" href="/">&larr; Back to home</a>
   <p class="hello">A free checklist for anyone who builds or commissions courses</p>
   <h1>Before You Publish: <span class="hl">12 checks for online training</span></h1>
   <p class="lede">Answer yes or no for each one. Small details decide whether a course works for every learner. Each one is quick to fix once you know where to look.</p>
   <div class="actions"><a class="btn" href="/Before-You-Publish-Checklist.pdf" target="_blank" rel="noopener">Download the one-page PDF</a></div>
 
   <div class="check-grid">
-<div class="check-group"><h3>Structure</h3><ol class="checks" start="1"><li>The course opens with one sentence on what learners will be able to do afterwards.</li><li>Headings follow a clear order: one title, then sections, then sub-sections.</li><li>Learners can always see where they are and how much is left.</li></ol></div>
-<div class="check-group"><h3>Content</h3><ol class="checks" start="4"><li>Sentences are short enough to read on a phone, and any jargon is explained.</li><li>Every image that carries meaning has a text description.</li><li>Nothing relies on colour alone, such as "fix the fields in red".</li><li>Videos have captions and a transcript.</li></ol></div>
-<div class="check-group"><h3>Interaction</h3><ol class="checks" start="8"><li>Every drag, drop or hover can also be done with a tap or the keyboard.</li><li>Feedback explains why an answer is right or wrong, including the wrong ones.</li><li>The course can be completed with a keyboard alone, in a sensible reading order.</li></ol></div>
-<div class="check-group"><h3>Connectivity</h3><ol class="checks" start="11"><li>Pages load on a slow connection: small files, no autoplay video.</li><li>Key content has a download or offline version.</li></ol></div>
+<div class="check-group"><h3>Structure</h3><ol class="checks" start="1"><li><label><input type="checkbox" class="chk"><span>The course opens with one sentence on what learners will be able to do afterwards.</span></label></li><li><label><input type="checkbox" class="chk"><span>Headings follow a clear order: one title, then sections, then sub-sections.</span></label></li><li><label><input type="checkbox" class="chk"><span>Learners can always see where they are and how much is left.</span></label></li></ol></div>
+<div class="check-group"><h3>Content</h3><ol class="checks" start="4"><li><label><input type="checkbox" class="chk"><span>Sentences are short enough to read on a phone, and any jargon is explained.</span></label></li><li><label><input type="checkbox" class="chk"><span>Every image that carries meaning has a text description.</span></label></li><li><label><input type="checkbox" class="chk"><span>Nothing relies on colour alone, such as "fix the fields in red".</span></label></li><li><label><input type="checkbox" class="chk"><span>Videos have captions and a transcript.</span></label></li></ol></div>
+<div class="check-group"><h3>Interaction</h3><ol class="checks" start="8"><li><label><input type="checkbox" class="chk"><span>Every drag, drop or hover can also be done with a tap or the keyboard.</span></label></li><li><label><input type="checkbox" class="chk"><span>Feedback explains why an answer is right or wrong, including the wrong ones.</span></label></li><li><label><input type="checkbox" class="chk"><span>The course can be completed with a keyboard alone, in a sensible reading order.</span></label></li></ol></div>
+<div class="check-group"><h3>Connectivity</h3><ol class="checks" start="11"><li><label><input type="checkbox" class="chk"><span>Pages load on a slow connection: small files, no autoplay video.</span></label></li><li><label><input type="checkbox" class="chk"><span>Key content has a download or offline version.</span></label></li></ol></div>
   </div>
 
-  <h2>Your score</h2>
+  <h2 id="score-h">Your score</h2>
+  <div class="score-box" role="status" aria-live="polite">
+    <p class="score-count"><b id="score-n">0</b> of 12 checked</p>
+    <p class="score-verdict" id="score-verdict">Tick each check that is true for your course.</p>
+  </div>
   <ul class="score-list">
-    <li><strong>10 to 12 yes.</strong> Ready to publish.</li>
-    <li><strong>7 to 9 yes.</strong> Needs a quick pass.</li>
-    <li><strong>Below 7.</strong> Worth a rework.</li>
+    <li data-band="high"><strong>10 to 12 yes.</strong> Ready to publish.</li>
+    <li data-band="mid"><strong>7 to 9 yes.</strong> Needs a quick pass.</li>
+    <li data-band="low"><strong>Below 7.</strong> Worth a rework.</li>
   </ul>
+  <button class="reset" id="reset" type="button">Clear all ticks</button>
 
   <h2>Want a second pair of eyes?</h2>
   <p>I review courses for accessibility and clarity, and I build training that works on phones and slow connections. Send me the course and I will return a prioritised list of fixes.</p>
@@ -68,6 +74,27 @@
 <footer class="site"><div class="wrap"><span>© 2026 Stella Cherotich</span><span>Nairobi, Kenya</span></div></footer>
 
 <script>
+  (function () {
+    var boxes = document.querySelectorAll('.chk');
+    var n = document.getElementById('score-n');
+    var verdict = document.getElementById('score-verdict');
+    var bands = document.querySelectorAll('.score-list li');
+    function update() {
+      var c = 0;
+      boxes.forEach(function (b) { if (b.checked) c++; });
+      n.textContent = c;
+      var band = c >= 10 ? 'high' : c >= 7 ? 'mid' : 'low';
+      verdict.textContent = c === 0 ? 'Tick each check that is true for your course.' :
+        band === 'high' ? 'Ready to publish.' : band === 'mid' ? 'Needs a quick pass.' : 'Worth a rework.';
+      bands.forEach(function (li) { li.classList.toggle('on', c > 0 && li.dataset.band === band); });
+    }
+    boxes.forEach(function (b) { b.addEventListener('change', update); });
+    document.getElementById('reset').addEventListener('click', function () {
+      boxes.forEach(function (b) { b.checked = false; });
+      update();
+    });
+    update();
+  })();
   (function () {
     var toggle = document.getElementById('nav-toggle');
     var links = document.getElementById('nav-links');
