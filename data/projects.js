@@ -8,7 +8,7 @@ window.PROJECTS = [
     problemStatement: 'When advisers pitch early, clients lose trust and often end up with cover they do not need. Advisers need a routine for finding the main protection need before they recommend any product.',
     solution: 'Designed a short module around one learning outcome, with three objectives written using Bloom verbs, and practice that moves from recognising question types to making decisions in a client scenario.',
     image: '/images/work/ask-before-you-advise-hero.jpg',
-    ogImage: '/images/work/ask-before-you-advise-og.jpg',
+    ogImage: '/images/work/ask-before-you-advise-share.jpg',
     tags: ['Rise 360', 'SCORM 1.2', 'Scenario-Based'],
     links: [
       { label: 'Open the module', href: '/ask-before-you-advise/', external: true }
