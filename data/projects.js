@@ -39,6 +39,8 @@ window.PROJECTS = [
     summary: 'A seven-module, self-paced course in Articulate Rise 360 that takes career changers from what a product manager does to using AI responsibly, built around one running case study.',
     problemStatement: 'Career changers and junior associates who want to move into product management often have no formal experience and no clear path through the basics, from discovery to launch.',
     solution: 'Designed a seven-module course with a stated learner outcome for each module, one fictional case study that runs through all of them, and practice that matches each skill, then built it in Rise 360.',
+    image: '/images/work/introduction-to-product-management-hero.jpg',
+    ogImage: '/images/work/introduction-to-product-management-og.jpg',
     tags: ['Rise 360', 'Course Design', 'Product Management'],
     links: [
       { label: 'Open the course', href: '/introduction-to-product-management/', external: true },
