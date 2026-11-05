@@ -92,3 +92,16 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 .site-nav .wrap{max-width:62rem}
 .goals{margin:0 0 0;padding-left:1.25rem}.goals li{padding:.15rem 0 .15rem .3rem}.goals li::marker{color:var(--clay)}
 .contact{background:rgba(246,223,156,.3)}
+
+.check-grid{display:grid;gap:1.25rem;margin:2.5rem 0 2.5rem}
+@media(min-width:760px){.check-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+.check-group{background:#FFFBEF;border:2px solid var(--ink);border-radius:1.25rem;padding:1.25rem 1.4rem .6rem;box-shadow:5px 5px 0 var(--olive)}
+.check-group h3{margin:0 0 .5rem}
+.checks{list-style:none;margin:0;padding:0;counter-reset:none}
+.checks li{display:grid;grid-template-columns:1.6rem 1fr;gap:.6rem;padding:.7rem 0;border-top:1px solid var(--line);font-size:1.02rem;line-height:1.5}
+.checks li:first-child{border-top:0}
+.checks li::before{content:"";width:1.15rem;height:1.15rem;border:2px solid var(--ink);border-radius:.3rem;background:#fff;margin-top:.2rem}
+.score-list{list-style:none;margin:0 0 2.5rem;padding:0;display:grid;gap:.5rem}
+.score-list li{padding:.2rem 0}
+.score-list strong{font-family:var(--serif);font-weight:500;color:var(--clay-dark)}
+.checklist-page h2{margin-top:2.5rem}
