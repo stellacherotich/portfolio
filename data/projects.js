@@ -37,20 +37,20 @@ window.PROJECTS = [
     title: 'Introduction to Product Management: A Seven-Module Course',
     year: '2026',
     client: 'Portfolio project',
-    summary: 'A seven-module, self-paced course in Articulate Rise 360 that takes career changers from what a product manager does to using AI responsibly, built around one running case study.',
+    summary: 'A seven-module, self-paced course, originally built in Articulate Rise 360, that takes career changers from what a product manager does to using AI responsibly, built around one running case study.',
     problemStatement: 'Career changers and junior associates who want to move into product management often have no formal experience and no clear path through the basics, from discovery to launch.',
     solution: 'Designed a seven-module course with a stated learner outcome for each module, one fictional case study that runs through all of them, and practice that matches each skill, then built it in Rise 360.',
     image: '/images/work/introduction-to-product-management-hero.jpg',
     ogImage: '/images/work/introduction-to-product-management-og.jpg',
     tags: ['Rise 360', 'Course Design', 'Product Management'],
     links: [
-      { label: 'Open the course', href: '/introduction-to-product-management/', external: true },
-      { label: 'Read the content sheet (PDF)', href: '/work/introduction-to-product-management/content-sheet.pdf', external: true }
+      { label: 'Open the course preview', href: '/introduction-to-product-management/', external: true }
     ],
     details: {
       context: [
         'The audience is career changers, junior associates and aspiring product managers with no formal PM experience. There are no prerequisites, and the course is self-paced, planned at about seven hours across seven modules.',
-        'The running case study is Mwangaza, a fictional learning app for Kenyan secondary students. It means the course uses no real company content and is safe to share publicly.'
+        'The running case study is Mwangaza, a fictional learning app for Kenyan secondary students. It means the course uses no real company content and is safe to share publicly.',
+        'I first built the course in Articulate Rise 360. The version linked on this page is a web rebuild of the same course, with Lessons 1 and 2 open as a free preview.'
       ],
       impact: [
         { value: '7 modules', label: 'From the PM role through discovery, prioritisation and delivery to metrics, launch and AI' },

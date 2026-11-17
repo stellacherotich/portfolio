@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1: Understanding the Product Manager Role | Introduction to Product Management</title>
+<meta name="description" content="Lesson 1 of Introduction to Product Management: what a product manager does, the product lifecycle, and how the role differs from project manager and product owner.">
+<script src="../react.production.min.js"></script>
+<script src="../react-dom.production.min.js"></script>
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;display=swap">
+<style>
+body{margin:0;background:#FBF6EE}
+a{color:#7A3E12}a:hover{color:#4F2607}
+button{font-family:inherit;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid #1D4F7A;outline-offset:3px;border-radius:6px}
+main p{max-width:68ch}
+</style>
+</helmet>
+<div style="background: #FBF6EE; color: #2B2118; font-family: Figtree, system-ui, sans-serif; font-size: clamp(17px, 0.25vw + 16px, 19px); line-height: 1.6; min-height: 100vh">
+
+<header style="border-bottom: 1px solid #D9CDBB; background: #FFFDF8">
+<div style="max-width: 960px; margin: 0 auto; padding: 12px clamp(20px, 4vw, 40px) 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<a href="../" style="font-weight: 600; font-size: 15px; padding: 10px 0; min-height: 44px; box-sizing: border-box; display: flex; align-items: center">Introduction to Product Management</a>
+<button type="button" aria-expanded="{{menu.open}}" aria-controls="course-menu" onClick="{{menu.toggle}}" style="min-height: 44px; padding: 8px 16px; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 10px; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px"><span>Lesson menu</span><span aria-hidden="true" style="font-size: 20px; line-height: 1; width: 14px; text-align: center">{{menu.sign}}</span></button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: #5E5246">Lesson 1 of 7</p>
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px">
+<span style="height: 8px; border-radius: 4px; background: #2B2118; border: 1px solid #2B2118; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+<span style="height: 8px; border-radius: 4px; background: #FFFDF8; border: 1px solid #8A7B68; box-sizing: border-box"></span>
+</div>
+</div>
+<div id="course-menu">
+<sc-if value="{{menu.open}}" hint-placeholder-val="{{ false }}">
+<nav aria-label="Lessons" style="padding-top: 6px">
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); column-gap: 32px; border-top: 1px solid #D9CDBB">
+<li aria-current="page" style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="font-weight: 700; min-width: 18px">1</span>
+<span style="display: flex; flex-direction: column"><span style="font-weight: 700">Understanding the Product Manager Role</span><span style="font-size: 14px; color: #5E5246">Current lesson</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB">
+<a href="../lesson-2/" style="display: flex; gap: 12px; align-items: baseline; padding: 12px 4px; min-height: 44px; box-sizing: border-box; text-decoration: none; color: #2B2118">
+<span style="font-weight: 600; min-width: 18px">2</span>
+<span style="display: flex; flex-direction: column"><span style="font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Discovery and User Research Fundamentals</span><span style="font-size: 14px; color: #5E5246">Free lesson</span></span>
+</a>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">3</span>
+<span style="display: flex; flex-direction: column"><span>Strategy Development and Prioritization Frameworks</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">4</span>
+<span style="display: flex; flex-direction: column"><span>Delivering Value: Working with Engineering Teams</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">5</span>
+<span style="display: flex; flex-direction: column"><span>Product Metrics and Experimentation</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">6</span>
+<span style="display: flex; flex-direction: column"><span>Planning and Executing Product Launches</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">7</span>
+<span style="display: flex; flex-direction: column"><span>Responsible Use of AI in Product Management</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+<li style="border-bottom: 1px solid #D9CDBB; display: flex; gap: 12px; align-items: baseline; padding: 12px 4px">
+<span style="min-width: 18px; color: #5E5246">8</span>
+<span style="display: flex; flex-direction: column"><span>Quiz</span><span style="font-size: 14px; color: #5E5246">Locked in the free preview</span></span>
+</li>
+</ol>
+</nav>
+</sc-if>
+</div>
+</div>
+</header>
+
+<main style="max-width: 960px; margin: 0 auto; padding: 28px clamp(20px, 4vw, 40px) 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(44px, 5vw, 64px)">
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5E5246">Lesson 1</p>
+<h1 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(32px, 3vw + 20px, 48px); line-height: 1.14; letter-spacing: -0.01em">Understanding the Product Manager Role</h1>
+<img src="../images/lesson-1-banner.jpg" alt="" style="width: 100%; height: auto; display: block; border-radius: 10px">
+<p style="margin: 0">Product managers play a crucial role in shaping the direction and success of digital products. By understanding what a product manager does, you’ll build a strong foundation for all other product management skills. This lesson will help you see how the PM role connects teams, drives outcomes, and ensures products deliver real value to users.</p>
+<p style="margin: 0">By the end of this lesson, you will be able to:</p>
+<ol style="margin: 0; padding: 0 0 0 26px; display: flex; flex-direction: column; gap: 8px">
+<li style="padding-left: 4px">Describe the core responsibilities of a product manager.</li>
+<li style="padding-left: 4px">Identify the stages of the product lifecycle.</li>
+<li style="padding-left: 4px">Distinguish between the roles of PM, project manager, and product owner.</li>
+<li style="padding-left: 4px">Recognize essential skills for effective product managers.</li>
+</ol>
+</section>
+
+<section style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px 36px">
+<img src="../images/lesson-1-welcome.jpg" alt="" style="flex: 1 1 300px; min-width: 0; max-width: 100%; height: auto; display: block; border-radius: 10px">
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">Welcome to the Course</h2>
+<p style="margin: 0">Welcome to Introduction to Product Management! Throughout this course, you’ll follow the story of Mwangaza, a learning app designed for Kenyan secondary students. By exploring real-world scenarios from Mwangaza’s journey, you’ll see how product management concepts apply in practice and gain insights you can use in your own career.</p>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">Meet the Mwangaza Team</h2>
+<p style="margin: 0">Get to know the five key members of the Mwangaza team. Each plays a unique role in building and improving the product. You’ll see how they work together throughout the course.</p>
+<p style="margin: 0">Expand each panel to learn about their responsibilities and how they contribute to the product process.</p>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #8A7B68">
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="team-b0" aria-expanded="{{team.i0.open}}" aria-controls="team-p0" onClick="{{team.i0.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Product Manager (PM)</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{team.i0.sign}}</span></button></h3>
+<div id="team-p0" role="region" aria-labelledby="team-b0"><sc-if value="{{team.i0.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">The PM leads the team to ensure they build the right features for the right users at the right time. They balance user needs, business goals, and technical constraints.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="team-b1" aria-expanded="{{team.i1.open}}" aria-controls="team-p1" onClick="{{team.i1.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Designer</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{team.i1.sign}}</span></button></h3>
+<div id="team-p1" role="region" aria-labelledby="team-b1"><sc-if value="{{team.i1.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">The designer creates user-friendly interfaces and experiences. They turn ideas into wireframes and prototypes, focusing on how students interact with the app.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="team-b2" aria-expanded="{{team.i2.open}}" aria-controls="team-p2" onClick="{{team.i2.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Engineer</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{team.i2.sign}}</span></button></h3>
+<div id="team-p2" role="region" aria-labelledby="team-b2"><sc-if value="{{team.i2.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">The engineer builds and maintains the app’s technical foundation. They turn designs and requirements into working software, ensuring reliability and performance.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="team-b3" aria-expanded="{{team.i3.open}}" aria-controls="team-p3" onClick="{{team.i3.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Data Analyst</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{team.i3.sign}}</span></button></h3>
+<div id="team-p3" role="region" aria-labelledby="team-b3"><sc-if value="{{team.i3.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">The data analyst tracks how students use the app and uncovers insights from usage data. They help the team make evidence-based decisions.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="team-b4" aria-expanded="{{team.i4.open}}" aria-controls="team-p4" onClick="{{team.i4.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Sponsor</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{team.i4.sign}}</span></button></h3>
+<div id="team-p4" role="region" aria-labelledby="team-b4"><sc-if value="{{team.i4.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">The sponsor provides resources and strategic direction. They ensure the team’s work aligns with the organization’s goals and supports long-term success.</p></sc-if></div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px; padding: 26px 0; border-top: 2px solid #2B2118; border-bottom: 2px solid #2B2118">
+<p style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 23px; line-height: 1.32">A <strong style="font-weight: 600">product manager</strong> makes sure the team builds the right thing, for the right people, at the right time.</p>
+<p style="margin: 0">Product managers focus on outcomes, not just outputs. Instead of simply delivering features, they aim to solve real problems for users and the business.</p>
+<p style="margin: 0">By prioritizing outcomes, PMs help teams avoid wasted effort and ensure every release delivers value. This means asking, "What impact will this have?" rather than just, "What did we build?"</p>
+<p style="margin: 0"><strong>Reflect:</strong> How might focusing on outcomes over outputs change the way you approach your own work?</p>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">What Do Product Managers Do Day to Day?</h2>
+<p style="margin: 0">Explore the main activities that fill a product manager’s daily schedule. Each responsibility is essential to guiding the team and delivering value. Expand each section to see how these tasks play out at Mwangaza.</p>
+<p style="margin: 0">Review each panel for a real-world example.</p>
+<div style="display: flex; flex-direction: column; border-top: 1px solid #8A7B68">
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="day-b0" aria-expanded="{{day.i0.open}}" aria-controls="day-p0" onClick="{{day.i0.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Discover Problems</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{day.i0.sign}}</span></button></h3>
+<div id="day-p0" role="region" aria-labelledby="day-b0"><sc-if value="{{day.i0.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">PMs identify user needs and pain points by talking to students and teachers. At Mwangaza, the team noticed students struggled to find practice quizzes, prompting further investigation.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="day-b1" aria-expanded="{{day.i1.open}}" aria-controls="day-p1" onClick="{{day.i1.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Decide Priorities</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{day.i1.sign}}</span></button></h3>
+<div id="day-p1" role="region" aria-labelledby="day-b1"><sc-if value="{{day.i1.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">They weigh different opportunities and decide which problems to tackle first. For example, Mwangaza’s PM prioritized improving quiz discoverability over adding new features.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="day-b2" aria-expanded="{{day.i2.open}}" aria-controls="day-p2" onClick="{{day.i2.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Define Solutions</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{day.i2.sign}}</span></button></h3>
+<div id="day-p2" role="region" aria-labelledby="day-b2"><sc-if value="{{day.i2.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">PMs work with designers and engineers to brainstorm and select the best solutions. At Mwangaza, this meant testing different layouts to make quizzes easier to find.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="day-b3" aria-expanded="{{day.i3.open}}" aria-controls="day-p3" onClick="{{day.i3.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Deliver with the Team</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{day.i3.sign}}</span></button></h3>
+<div id="day-p3" role="region" aria-labelledby="day-b3"><sc-if value="{{day.i3.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">They coordinate the team’s work, ensuring everyone is aligned and obstacles are removed. The PM at Mwangaza led sprint planning and checked in daily to keep progress on track.</p></sc-if></div>
+</div>
+<div style="border-bottom: 1px solid #8A7B68">
+<h3 style="margin: 0; font-size: 17px"><button type="button" id="day-b4" aria-expanded="{{day.i4.open}}" aria-controls="day-p4" onClick="{{day.i4.toggle}}" style="width: 100%; min-height: 56px; padding: 12px 4px; background: transparent; border: 0; color: #2B2118; font-size: 18px; font-weight: 600; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 12px"><span>Measure Results</span><span aria-hidden="true" style="font-size: 24px; line-height: 1; width: 20px; text-align: center">{{day.i4.sign}}</span></button></h3>
+<div id="day-p4" role="region" aria-labelledby="day-b4"><sc-if value="{{day.i4.open}}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 0 4px 18px">After launch, PMs track usage and feedback to see if the solution worked. Mwangaza’s PM reviewed analytics to confirm more students were completing quizzes.</p></sc-if></div>
+</div>
+</div>
+</section>
+
+<section aria-label="Process" style="display: flex; flex-direction: column; gap: 16px; padding: 22px 20px; background: #FFFDF8; border: 1px solid #8A7B68; border-radius: 12px">
+<p style="margin: 0; font-size: 15px; font-weight: 600; color: #5E5246">{{proc.label}}</p>
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 10px; min-height: 170px">
+<sc-if value="{{proc.i0}}" hint-placeholder-val="{{ true }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Introduction</h3>
+<p style="margin: 0">Every product moves through a series of stages, from initial idea to eventual retirement. Understanding these stages helps PMs guide products to success.</p>
+</sc-if>
+<sc-if value="{{proc.i1}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Idea</h3>
+<p style="margin: 0">This is where a new product or feature is first imagined, often sparked by a user need or business goal.</p>
+</sc-if>
+<sc-if value="{{proc.i2}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Validate</h3>
+<p style="margin: 0">The team tests assumptions and gathers evidence to confirm there’s real demand before investing heavily in development.</p>
+</sc-if>
+<sc-if value="{{proc.i3}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Build</h3>
+<p style="margin: 0">Designers and engineers work together to create the product or feature, guided by the PM’s vision and requirements.</p>
+</sc-if>
+<sc-if value="{{proc.i4}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Launch</h3>
+<p style="margin: 0">The product goes live for users. The team monitors for issues and gathers early feedback.</p>
+</sc-if>
+<sc-if value="{{proc.i5}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Grow</h3>
+<p style="margin: 0">As the product gains traction, the team adds improvements, scales usage, and optimizes performance.</p>
+</sc-if>
+<sc-if value="{{proc.i6}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Sunset</h3>
+<p style="margin: 0">Eventually, some products or features are retired when they’re no longer needed or valuable. PMs plan for a smooth transition.</p>
+</sc-if>
+<sc-if value="{{proc.i7}}" hint-placeholder-val="{{ false }}">
+<h3 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2">Summary</h3>
+<p style="margin: 0">By understanding the product lifecycle, PMs can make better decisions at every stage and ensure the product delivers lasting value.</p>
+</sc-if>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 440px">
+<button type="button" onClick="{{proc.prev}}" disabled="{{proc.prevOff}}" style="min-height: 48px; padding: 10px 16px; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 10px; font-size: 17px; font-weight: 600">Previous step</button>
+<button type="button" onClick="{{proc.next}}" disabled="{{proc.nextOff}}" style="min-height: 48px; padding: 10px 16px; background: #2B2118; color: #FFFDF8; border: 2px solid #2B2118; border-radius: 10px; font-size: 17px; font-weight: 600">Next step</button>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">Comparing PM, Project Manager, and Product Owner</h2>
+<p style="margin: 0">Product manager, project manager, and product owner are three roles that often overlap but have distinct responsibilities. Explore each tab to see how they differ in focus, key questions, measures of success, and typical artefacts.</p>
+<p style="margin: 0">Expand each tab for a real-world example of each role in action.</p>
+<div style="display: flex; flex-direction: column; background: #FFFDF8; border: 1px solid #8A7B68; border-radius: 12px; overflow: hidden">
+<div role="tablist" aria-label="Roles" onKeyDown="{{tabs.key}}" style="display: flex; flex-wrap: wrap; gap: 1px; background: #D9CDBB; border-bottom: 1px solid #8A7B68">
+<button type="button" role="tab" id="tab-0" aria-selected="{{tabs.i0.on}}" aria-controls="tabpanel-0" tabIndex="{{tabs.i0.ti}}" onClick="{{tabs.i0.pick}}" style="flex: 1 1 180px; min-height: 52px; padding: 10px 16px; background: #FFFDF8; border: 0; color: #2B2118; font-size: 17px; font-weight: 600; text-align: left; display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 16px; font-size: 14px">{{tabs.i0.mark}}</span><span>Product Manager</span></button>
+<button type="button" role="tab" id="tab-1" aria-selected="{{tabs.i1.on}}" aria-controls="tabpanel-1" tabIndex="{{tabs.i1.ti}}" onClick="{{tabs.i1.pick}}" style="flex: 1 1 180px; min-height: 52px; padding: 10px 16px; background: #FFFDF8; border: 0; color: #2B2118; font-size: 17px; font-weight: 600; text-align: left; display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 16px; font-size: 14px">{{tabs.i1.mark}}</span><span>Project Manager</span></button>
+<button type="button" role="tab" id="tab-2" aria-selected="{{tabs.i2.on}}" aria-controls="tabpanel-2" tabIndex="{{tabs.i2.ti}}" onClick="{{tabs.i2.pick}}" style="flex: 1 1 180px; min-height: 52px; padding: 10px 16px; background: #FFFDF8; border: 0; color: #2B2118; font-size: 17px; font-weight: 600; text-align: left; display: flex; align-items: center; gap: 12px"><span aria-hidden="true" style="width: 16px; font-size: 14px">{{tabs.i2.mark}}</span><span>Product Owner</span></button>
+</div>
+<sc-if value="{{tabs.i0.on}}" hint-placeholder-val="{{ true }}">
+<div role="tabpanel" id="tabpanel-0" aria-labelledby="tab-0" tabIndex="0" style="padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0">Focus: Product vision and user value<br>Key question: What should we build and why?<br>Success measure: User and business outcomes<br>Typical artefact: Product roadmap</p>
+<p style="margin: 0">Example: The PM at Mwangaza decides to prioritize a new quiz feature based on student feedback and business goals.</p>
+</div>
+</sc-if>
+<sc-if value="{{tabs.i1.on}}" hint-placeholder-val="{{ false }}">
+<div role="tabpanel" id="tabpanel-1" aria-labelledby="tab-1" tabIndex="0" style="padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0">Focus: Delivery on time and budget<br>Key question: How will we deliver this work?<br>Success measure: On-time, on-budget delivery<br>Typical artefact: Project plan</p>
+<p style="margin: 0">Example: The project manager creates a timeline and coordinates tasks so the new quiz feature launches as scheduled.</p>
+</div>
+</sc-if>
+<sc-if value="{{tabs.i2.on}}" hint-placeholder-val="{{ false }}">
+<div role="tabpanel" id="tabpanel-2" aria-labelledby="tab-2" tabIndex="0" style="padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0">Focus: Maximizing value from the development team<br>Key question: What’s the next most valuable thing to build?<br>Success measure: Value delivered in each sprint<br>Typical artefact: Prioritized backlog</p>
+<p style="margin: 0">Example: The product owner works with the team to clarify requirements and ensure the most important backlog items are ready for development.</p>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">Skills of a Strong Product Manager</h2>
+<p style="margin: 0">Review these essential skills that help product managers succeed. Flip each card to see why each skill matters in the PM role.</p>
+<p style="margin: 0">Reflect on which skills you already have and which you’d like to develop further.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px">
+<li>
+<button type="button" onClick="{{card.i0.flip}}" style="width: 100%; height: 100%; min-height: 168px; padding: 18px 20px; box-sizing: border-box; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<span aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{card.i0.front}}" hint-placeholder-val="{{ true }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 1 of 5, front</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.2">Curiosity</span></sc-if>
+<sc-if value="{{card.i0.back}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 1 of 5, back</span><span style="font-size: 17px; line-height: 1.55">Asking questions and seeking to understand users, problems, and opportunities leads to better product decisions.</span></sc-if>
+</span>
+<span style="font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Flip card</span>
+</button>
+</li>
+<li>
+<button type="button" onClick="{{card.i1.flip}}" style="width: 100%; height: 100%; min-height: 168px; padding: 18px 20px; box-sizing: border-box; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<span aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{card.i1.front}}" hint-placeholder-val="{{ true }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 2 of 5, front</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.2">Communication</span></sc-if>
+<sc-if value="{{card.i1.back}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 2 of 5, back</span><span style="font-size: 17px; line-height: 1.55">Clear communication helps align the team, share vision, and keep everyone informed and motivated.</span></sc-if>
+</span>
+<span style="font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Flip card</span>
+</button>
+</li>
+<li>
+<button type="button" onClick="{{card.i2.flip}}" style="width: 100%; height: 100%; min-height: 168px; padding: 18px 20px; box-sizing: border-box; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<span aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{card.i2.front}}" hint-placeholder-val="{{ true }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 3 of 5, front</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.2">Prioritisation</span></sc-if>
+<sc-if value="{{card.i2.back}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 3 of 5, back</span><span style="font-size: 17px; line-height: 1.55">Deciding what matters most ensures the team focuses on high-impact work and avoids distractions.</span></sc-if>
+</span>
+<span style="font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Flip card</span>
+</button>
+</li>
+<li>
+<button type="button" onClick="{{card.i3.flip}}" style="width: 100%; height: 100%; min-height: 168px; padding: 18px 20px; box-sizing: border-box; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<span aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{card.i3.front}}" hint-placeholder-val="{{ true }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 4 of 5, front</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.2">Data literacy</span></sc-if>
+<sc-if value="{{card.i3.back}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 4 of 5, back</span><span style="font-size: 17px; line-height: 1.55">Understanding and interpreting data allows PMs to make evidence-based decisions and measure success.</span></sc-if>
+</span>
+<span style="font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Flip card</span>
+</button>
+</li>
+<li>
+<button type="button" onClick="{{card.i4.flip}}" style="width: 100%; height: 100%; min-height: 168px; padding: 18px 20px; box-sizing: border-box; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 12px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; gap: 12px">
+<span aria-live="polite" style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{card.i4.front}}" hint-placeholder-val="{{ true }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 5 of 5, front</span><span style="font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.2">Empathy</span></sc-if>
+<sc-if value="{{card.i4.back}}" hint-placeholder-val="{{ false }}"><span style="font-size: 14px; font-weight: 600; color: #5E5246">Card 5 of 5, back</span><span style="font-size: 17px; line-height: 1.55">Seeing things from the user’s perspective helps PMs design solutions that truly meet real needs.</span></sc-if>
+</span>
+<span style="font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Flip card</span>
+</button>
+</li>
+</ul>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px">
+<h2 style="margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(25px, 1.4vw + 19px, 32px); line-height: 1.2">Knowledge check</h2>
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 12px">
+<legend style="padding: 0; margin: 0 0 14px; font-size: 19px; font-weight: 600; line-height: 1.4">Which statement best describes the product manager role?</legend>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px">
+<label style="display: flex; gap: 14px; align-items: flex-start; min-height: 56px; padding: 14px 16px; box-sizing: border-box; background: #FFFDF8; border: 2px solid #8A7B68; border-radius: 12px; cursor: pointer"><input type="radio" name="kc1" checked="{{kc.o0.checked}}" disabled="{{kc.sent}}" onChange="{{kc.o0.pick}}" style="width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; accent-color: #2B2118"><span>A product manager ensures the team builds the right thing, for the right people, at the right time.</span></label>
+<label style="display: flex; gap: 14px; align-items: flex-start; min-height: 56px; padding: 14px 16px; box-sizing: border-box; background: #FFFDF8; border: 2px solid #8A7B68; border-radius: 12px; cursor: pointer"><input type="radio" name="kc1" checked="{{kc.o1.checked}}" disabled="{{kc.sent}}" onChange="{{kc.o1.pick}}" style="width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; accent-color: #2B2118"><span>A product manager writes all the code for the product.</span></label>
+<label style="display: flex; gap: 14px; align-items: flex-start; min-height: 56px; padding: 14px 16px; box-sizing: border-box; background: #FFFDF8; border: 2px solid #8A7B68; border-radius: 12px; cursor: pointer"><input type="radio" name="kc1" checked="{{kc.o2.checked}}" disabled="{{kc.sent}}" onChange="{{kc.o2.pick}}" style="width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; accent-color: #2B2118"><span>A product manager manages the company’s finances.</span></label>
+<label style="display: flex; gap: 14px; align-items: flex-start; min-height: 56px; padding: 14px 16px; box-sizing: border-box; background: #FFFDF8; border: 2px solid #8A7B68; border-radius: 12px; cursor: pointer"><input type="radio" name="kc1" checked="{{kc.o3.checked}}" disabled="{{kc.sent}}" onChange="{{kc.o3.pick}}" style="width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; accent-color: #2B2118"><span>A product manager is responsible for marketing only.</span></label>
+</div>
+</fieldset>
+<sc-if value="{{kc.open}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{kc.submit}}" disabled="{{kc.cantSubmit}}" style="width: 100%; max-width: 320px; min-height: 52px; padding: 12px 22px; background: #2B2118; color: #FFFDF8; border: 2px solid #2B2118; border-radius: 10px; font-size: 17px; font-weight: 600">Submit answer</button>
+</sc-if>
+<div role="status" aria-live="polite" style="display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{kc.right}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 18px 20px; background: #E6EEF5; border: 2px solid #1D4F7A; border-radius: 12px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-weight: 700; font-size: 18px; color: #163D5F; display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#163D5F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5l5 5L18 6"></path></svg><span>Correct</span></p>
+<p style="margin: 0">This is correct. The product manager's main responsibility is to guide the team to build valuable solutions for users and the business.</p>
+</div>
+</sc-if>
+<sc-if value="{{kc.wrong}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 18px 20px; background: #FBEDE3; border: 2px dashed #8C2F12; border-radius: 12px; display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-weight: 700; font-size: 18px; color: #7A2810; display: flex; align-items: center; gap: 10px"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#7A2810" stroke-width="3" stroke-linecap="round"><path d="M5 5l12 12M17 5L5 17"></path></svg><span>Incorrect</span></p>
+<sc-if value="{{kc.o1.fb}}" hint-placeholder-val="{{ false }}"><p style="margin: 0">This is incorrect. Writing code is typically the responsibility of engineers, not the product manager.</p></sc-if>
+<sc-if value="{{kc.o2.fb}}" hint-placeholder-val="{{ false }}"><p style="margin: 0">This is incorrect. Managing finances is the responsibility of finance professionals, not product managers.</p></sc-if>
+<sc-if value="{{kc.o3.fb}}" hint-placeholder-val="{{ false }}"><p style="margin: 0">This is incorrect. While product managers may work with marketing, their role is much broader and not limited to marketing only.</p></sc-if>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{kc.sent}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{kc.retry}}" style="width: 100%; max-width: 320px; min-height: 52px; padding: 12px 22px; background: #FFFDF8; color: #2B2118; border: 2px solid #2B2118; border-radius: 10px; font-size: 17px; font-weight: 600">Try again</button>
+</sc-if>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0">In this lesson, you learned what a product manager does, how products move through their lifecycle, and how the PM role differs from project manager and product owner. You also explored the key skills that make PMs effective leaders and collaborators.</p>
+<p style="margin: 0">Next, you’ll dive into discovery and user research—learning how to uncover real user needs and turn insights into actionable problem statements.</p>
+</section>
+
+<nav aria-label="Lesson navigation" style="display: flex; flex-direction: column; gap: 14px; padding-top: 24px; border-top: 1px solid #8A7B68">
+<a href="../lesson-2/" style="padding: 16px 18px; background: #2B2118; color: #FFFDF8; border-radius: 12px; display: flex; flex-direction: column; gap: 2px; text-decoration: none; max-width: 440px">
+<span style="font-size: 14px; font-weight: 600">Next lesson</span>
+<span style="font-weight: 600; font-size: 18px">Discovery and User Research Fundamentals</span>
+</a>
+<a href="../" style="display: flex; align-items: center; min-height: 44px; font-weight: 600">Back to course overview</a>
+</nav>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":4700}}'>
+class Component extends DCLogic {
+state = { menu: false, team: -1, day: -1, step: 0, tab: 0, flipped: {}, pick: -1, sent: false };
+
+renderVals() {
+const s = Object.assign({ menu: false, team: -1, day: -1, step: 0, tab: 0, flipped: {}, pick: -1, sent: false }, this.state || {});
+const minus = '−';
+
+const accordion = (key, count) => {
+const out = {};
+for (let i = 0; i < count; i++) {
+const open = s[key] === i;
+out['i' + i] = {
+open: open,
+sign: open ? minus : '+',
+toggle: () => this.setState({ [key]: open ? -1 : i })
+};
+}
+return out;
+};
+
+const steps = 8;
+const proc = {
+label: 'Step ' + (s.step + 1) + ' of ' + steps,
+prevOff: s.step === 0,
+nextOff: s.step === steps - 1,
+prev: () => this.setState({ step: Math.max(0, s.step - 1) }),
+next: () => this.setState({ step: Math.min(steps - 1, s.step + 1) })
+};
+for (let i = 0; i < steps; i++) proc['i' + i] = s.step === i;
+
+const tabCount = 3;
+const tabs = {
+key: (e) => {
+let n = s.tab;
+if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (s.tab + 1) % tabCount;
+else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (s.tab + tabCount - 1) % tabCount;
+else if (e.key === 'Home') n = 0;
+else if (e.key === 'End') n = tabCount - 1;
+else return;
+e.preventDefault();
+const list = e.currentTarget.querySelectorAll('[role="tab"]');
+this.setState({ tab: n }, () => { if (list[n]) list[n].focus(); });
+}
+};
+for (let i = 0; i < tabCount; i++) {
+const on = s.tab === i;
+tabs['i' + i] = { on: on, ti: on ? 0 : -1, mark: on ? '●' : '○', pick: () => this.setState({ tab: i }) };
+}
+
+const card = {};
+for (let i = 0; i < 5; i++) {
+const back = !!s.flipped[i];
+card['i' + i] = {
+front: !back,
+back: back,
+flip: () => this.setState({ flipped: Object.assign({}, s.flipped, { [i]: !back }) })
+};
+}
+
+const correct = 0;
+const kc = {
+open: !s.sent,
+sent: s.sent,
+cantSubmit: s.pick < 0,
+right: s.sent && s.pick === correct,
+wrong: s.sent && s.pick !== correct,
+submit: () => { if (s.pick >= 0) this.setState({ sent: true }); },
+retry: () => this.setState({ sent: false, pick: -1 })
+};
+for (let i = 0; i < 4; i++) {
+kc['o' + i] = {
+checked: s.pick === i,
+fb: s.sent && s.pick === i,
+pick: () => this.setState({ pick: i })
+};
+}
+
+return {
+menu: { open: s.menu, sign: s.menu ? minus : '+', toggle: () => this.setState({ menu: !s.menu }) },
+team: accordion('team', 5),
+day: accordion('day', 5),
+proc: proc,
+tabs: tabs,
+card: card,
+kc: kc
+};
+}
+}
+</script>
+</body>
+</html>
