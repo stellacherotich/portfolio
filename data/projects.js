@@ -17,7 +17,7 @@ window.PROJECTS = [
       context: [
         'The module uses a fictional insurer, Msingi Life, and a fictional client, Grace Wambui, so it contains no real company content and is safe to share publicly.',
         'The learning outcome: apply the Ask, Probe, Confirm routine in first meetings with clients to identify their main protection need before recommending any product.',
-        'I first built the module in Articulate Rise 360. The version linked on this page is a web rebuild of the same module, with the same content and interactions.'
+        'I first built the module in Articulate Rise 360. The version linked on this page is a web rebuild of the same module.'
       ],
       impact: [
         { value: 'SCORM 1.2', label: 'Exported as a SCORM package and tested in SCORM Cloud' },
