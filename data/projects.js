@@ -4,7 +4,7 @@ window.PROJECTS = [
     title: 'Ask Before You Advise: A Mobile-Friendly Module for Financial Advisers',
     year: '2026',
     client: 'Portfolio project (fictional insurer)',
-    summary: 'A five-minute self-paced module, built in Articulate Rise 360 and packaged as SCORM 1.2, that teaches an Ask, Probe, Confirm routine for first client meetings.',
+    summary: 'A five-minute self-paced module, originally built in Articulate Rise 360 and packaged as SCORM 1.2, that teaches an Ask, Probe, Confirm routine for first client meetings.',
     problemStatement: 'When advisers pitch early, clients lose trust and often end up with cover they do not need. Advisers need a routine for finding the main protection need before they recommend any product.',
     solution: 'Designed a short module around one learning outcome, with three objectives written using Bloom verbs, and practice that moves from recognising question types to making decisions in a client scenario.',
     image: '/images/work/ask-before-you-advise-hero.jpg',
@@ -16,7 +16,8 @@ window.PROJECTS = [
     details: {
       context: [
         'The module uses a fictional insurer, Msingi Life, and a fictional client, Grace Wambui, so it contains no real company content and is safe to share publicly.',
-        'The learning outcome: apply the Ask, Probe, Confirm routine in first meetings with clients to identify their main protection need before recommending any product.'
+        'The learning outcome: apply the Ask, Probe, Confirm routine in first meetings with clients to identify their main protection need before recommending any product.',
+        'I first built the module in Articulate Rise 360. The version linked on this page is a web rebuild of the same module, with the same content and interactions.'
       ],
       impact: [
         { value: 'SCORM 1.2', label: 'Exported as a SCORM package and tested in SCORM Cloud' },

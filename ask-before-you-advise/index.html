@@ -1,28 +1,542 @@
-<!doctype html>
-<!-- 
-course package version: 36ZEUspE
-rise_frontend sha: e641749171d25acf29856857f3e2b7eca3305360
-ai_scenario sha: 9e67cd7a018e93b894710122f6968af0e2556eeb
-learn_distribution_frontend sha: 5af9e2998e48108e3f7c44307aa060297cbcbe0e
-mondrian sha: 4e814372d177ef51d2e330df7000ad0231610363
-sandbox sha: 42753f3391b109fa3788c525c22880445ab48325
- -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ask before you advise</title>
-    
-    <script type="application/json" id="__CONFIG__">
-      {"remoteManifest":{"ai_scenario":{".js":["ai-scenario/entry.js"]},"learn_distribution_frontend":{".js":["learn_dist/entry.js"]},"mondrian":{".js":["mondrian/entry.js"]}},"assetTargetPrefixes":{"media":"assets","font":"lib/fonts"},"loadOnlyInLms":false,"surface":"web-export"}
-    </script>
-    
-    <script src="lib/dist/7137cfb8.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    
-      <script src="lib/rise/8a19ad57.js"></script>
-    
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Before You Advise | Stella Cherotich</title>
+<meta name="description" content="A five-minute module for financial advisers on the Ask, Probe, Confirm routine for first client meetings.">
+<script src="./react.production.min.js"></script>
+<script src="./react-dom.production.min.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#F4F7FB;color:#0B2545;font-family:Figtree,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}
+a{color:#1A5DAB}a:hover{color:#0B2545}
+button{font-family:inherit;cursor:pointer}
+:focus{outline:none}
+:focus-visible{outline:3px solid #0B2545;outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;font-size:18px;line-height:1.55">
+  <a href="#lesson-title" style="position:absolute;left:-9999px;top:0;background:#0B2545;color:#F4F7FB;padding:12px 16px;z-index:20" style-focus="left:8px;top:8px">Skip to lesson</a>
+  <header style="position:sticky;top:0;z-index:10;background:#F4F7FB;border-bottom:1px solid #C9D3E0">
+    <div style="max-width:1080px;margin:0 auto;padding:12px 20px 10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h1 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;line-height:1.2;color:#0B2545">Ask before you advise</h1>
+        <sc-if value="{{ narrow }}" hint-placeholder-val="{{ true }}"><button type="button" aria-expanded="{{ menuOpen }}" aria-controls="lesson-menu" onClick="{{ toggleMenu }}" style="min-height:44px;padding:0 16px;background:transparent;border:2px solid #0B2545;border-radius:10px;color:#0B2545;font-size:16px;font-weight:600" style-hover="background:#E4EBF5">{{ menuLabel }}</button></sc-if>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
+        <p style="margin:0;font-size:15px;font-weight:600;color:#0B2545;white-space:nowrap">{{ progressText }}</p>
+        <div role="progressbar" aria-label="Module progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="{{ lessonNum }}" aria-valuetext="{{ progressText }}" style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);gap:4px">
+          <sc-for list="{{ segs }}" as="s" hint-placeholder-count="6">
+            <div style="height:8px;border-radius:4px;border:1.5px solid #0B2545;background:{{ s.bg }}"></div>
+          </sc-for>
+        </div>
+      </div>
+      <sc-if value="{{ showDrop }}" hint-placeholder-val="{{ false }}">
+        <nav id="lesson-menu" aria-label="Lessons" style="margin-top:10px;padding-bottom:6px">
+          <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+            <sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+              <li>
+                <button type="button" aria-current="{{ m.current }}" onClick="{{ m.go }}" style="width:100%;min-height:48px;display:flex;align-items:center;gap:12px;text-align:left;padding:8px 14px;border-radius:10px;border:2px solid {{ m.border }};background:{{ m.bg }};color:#0B2545;font-size:17px;font-weight:{{ m.weight }}" style-hover="border-color:#0B2545">
+                  <span style="font-family:Fraunces,Georgia,serif;font-weight:600;min-width:20px">{{ m.n }}</span>
+                  <span style="flex:1">{{ m.title }}</span>
+                  <span style="font-size:14px;font-weight:600;color:#1A5DAB">{{ m.tag }}</span>
+                </button>
+              </li>
+            </sc-for>
+          </ol>
+        </nav>
+      </sc-if>
+    </div>
+  </header>
+
+  <sc-if value="{{ wide }}" hint-placeholder-val="{{ false }}">
+    <nav aria-label="Lessons" style="position:fixed;top:128px;left:max(20px,calc(50vw - 520px));width:260px">
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px">
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+          <li>
+            <button type="button" aria-current="{{ m.current }}" onClick="{{ m.go }}" style="width:100%;min-height:48px;display:flex;align-items:center;gap:12px;text-align:left;padding:8px 14px;border-radius:10px;border:2px solid {{ m.border }};background:{{ m.bg }};color:#0B2545;font-size:16px;line-height:1.3;font-weight:{{ m.weight }}" style-hover="border-color:#0B2545">
+              <span style="font-family:Fraunces,Georgia,serif;font-weight:600;min-width:20px">{{ m.n }}</span>
+              <span style="flex:1">{{ m.title }}</span>
+            </button>
+          </li>
+        </sc-for>
+      </ol>
+    </nav>
+  </sc-if>
+  <main style="flex:1;width:100%;max-width:{{ colMax }};margin:0 auto;padding:{{ mainPad }}">
+    <div aria-live="polite" role="status" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap">{{ announce }}</div>
+
+    <sc-if value="{{ isL1 }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="01 Welcome">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 1</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 14px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Welcome</h2>
+        <p style="margin:0 0 24px;font-size:20px;text-wrap:pretty">Learn to find a client's real need before you recommend a product.</p>
+        <div style="background:#0B2545;color:#F4F7FB;border-radius:14px;padding:22px 20px;margin-bottom:24px">
+          <h3 style="margin:0 0 10px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;color:#F3B544">Learning Outcomes</h3>
+          <p style="margin:0 0 12px;text-wrap:pretty">By the end of this module, you will be able to apply the Ask, Probe, Confirm routine in a first client meeting to identify their main protection need before recommending a product.</p>
+          <p style="margin:0 0 8px">To get there, you will:</p>
+          <ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px">
+            <li><strong>Differentiate</strong> between open, closed, and leading questions.</li>
+            <li><strong>Demonstrate</strong> the routine by choosing the strongest response at each stage of a client.</li>
+            <li><strong>Justify</strong> why you confirm a client's priority before you recommend a product.</li>
+          </ul>
+        </div>
+        <p style="margin:0;text-wrap:pretty">This module takes about 5 minutes and works on your mobile device. You will learn a three-step routine, practice choosing questions, and handle a first client meeting at Msingi Life. Msingi Life is a fictional company created for this sample.</p>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isL2 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="02 Discovery comes first">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 2</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 18px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Discovery comes first</h2>
+        <h3 style="margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:23px;color:#0B2545">Why discovery comes first</h3>
+        <p style="margin:0 0 28px;text-wrap:pretty">When advisers pitch early, clients lose trust and often end up with cover they don't need. <em>Strong</em> advisers ask first and recommend second, so we use this three-step routine in every first meeting.</p>
+        <div role="group" aria-labelledby="proc-h" style="background:#FFFFFF;border:2px solid #0B2545;border-radius:14px;padding:22px 20px">
+          <h3 id="proc-h" style="margin:0 0 16px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:23px;color:#0B2545">Three Step Routine</h3>
+          <div id="proc-step" tabindex="-1" style="min-height:170px">
+            <p style="margin:0 0 8px;font-size:15px;font-weight:700;color:#1A5DAB">{{ proc.count }}</p>
+            <h4 style="margin:0 0 8px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.1;color:#0B2545">{{ proc.title }}</h4>
+            <p style="margin:0;text-wrap:pretty">{{ proc.body }}</p>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:18px">
+            <button type="button" disabled="{{ proc.noBack }}" onClick="{{ proc.back }}" style="flex:1;min-height:50px;background:transparent;border:2px solid #0B2545;border-radius:10px;color:#0B2545;font-size:17px;font-weight:600;opacity:{{ proc.backOpacity }}">Back</button>
+            <button type="button" disabled="{{ proc.noNext }}" onClick="{{ proc.next }}" style="flex:1;min-height:50px;background:#1A5DAB;border:2px solid #1A5DAB;border-radius:10px;color:#FFFFFF;font-size:17px;font-weight:600;opacity:{{ proc.nextOpacity }}">Next</button>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isL3 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="03 Choose the right question">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 3</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 14px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Choose the right question</h2>
+        <p style="margin:0 0 22px;text-wrap:pretty">The kind of question we ask shapes the answer we get. Let's learn to tell the three kinds apart.</p>
+        <div role="tablist" aria-label="Question types" onKeyDown="{{ tabKey }}" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+            <button type="button" role="tab" id="{{ t.id }}" aria-selected="{{ t.selected }}" aria-controls="tab-panel" tabindex="{{ t.tabIndex }}" onClick="{{ t.pick }}" style="min-height:50px;border-radius:10px 10px 0 0;border:2px solid #0B2545;border-bottom-width:{{ t.bbw }};background:{{ t.bg }};color:{{ t.fg }};font-size:17px;font-weight:700;text-decoration:{{ t.deco }};text-underline-offset:5px;text-decoration-thickness:2px">{{ t.name }}</button>
+          </sc-for>
+        </div>
+        <div role="tabpanel" id="tab-panel" aria-labelledby="{{ tabPanel.labelledBy }}" tabindex="0" style="background:#FFFFFF;border:2px solid #0B2545;border-top:none;border-radius:0 0 14px 14px;padding:20px;min-height:190px;margin-bottom:36px">
+          <p style="margin:0 0 12px;text-wrap:pretty">{{ tabPanel.body }}</p>
+          <p style="margin:0;text-wrap:pretty">{{ tabPanel.example }}</p>
+        </div>
+
+        <p style="margin:0 0 16px;font-weight:600;text-wrap:pretty">Drag each question into the right group, or tap a question and then tap a group.</p>
+        <sc-if value="{{ sort.hasPool }}" hint-placeholder-val="{{ true }}">
+          <ul aria-label="Questions to sort" style="list-style:none;margin:0 0 20px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:8px">
+            <sc-for list="{{ sort.pool }}" as="it" hint-placeholder-count="6">
+              <li>
+                <button type="button" draggable="true" aria-pressed="{{ it.selected }}" onClick="{{ it.pick }}" onDragStart="{{ it.drag }}" style="width:100%;min-height:52px;text-align:left;padding:10px 14px;border-radius:10px;border:2px solid #0B2545;background:{{ it.bg }};color:{{ it.fg }};font-size:17px;font-weight:500;line-height:1.35;display:flex;gap:10px;align-items:center;justify-content:space-between">
+                  <span>{{ it.text }}</span>
+                  <span style="font-size:14px;font-weight:700;white-space:nowrap">{{ it.tag }}</span>
+                </button>
+              </li>
+            </sc-for>
+          </ul>
+        </sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));align-items:start;gap:12px">
+          <sc-for list="{{ sort.groups }}" as="g" hint-placeholder-count="3">
+            <div onDragOver="{{ g.over }}" onDrop="{{ g.drop }}" style="border:2px dashed #0B2545;border-radius:14px;padding:14px;background:#FFFFFF">
+              <h3 style="margin:0 0 10px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px;color:#0B2545">{{ g.name }}</h3>
+              <ul aria-label="{{ g.listLabel }}" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0">
+                  <li>
+                    <sc-if value="{{ sort.editing }}" hint-placeholder-val="{{ true }}">
+                      <button type="button" draggable="true" aria-pressed="{{ it.selected }}" onClick="{{ it.pick }}" onDragStart="{{ it.drag }}" style="width:100%;min-height:48px;text-align:left;padding:8px 12px;border-radius:10px;border:2px solid #0B2545;background:{{ it.bg }};color:{{ it.fg }};font-size:16px;font-weight:500;line-height:1.35;display:flex;gap:10px;align-items:center;justify-content:space-between">
+                        <span>{{ it.text }}</span>
+                        <span style="font-size:14px;font-weight:700;white-space:nowrap">{{ it.tag }}</span>
+                      </button>
+                    </sc-if>
+                    <sc-if value="{{ sort.done }}" hint-placeholder-val="{{ false }}">
+                      <div style="padding:10px 12px;border-radius:10px;border:2px {{ it.resBorder }} #0B2545;background:#F4F7FB;font-size:16px;line-height:1.35">
+                        <p style="margin:0 0 4px;font-weight:700;color:{{ it.resColor }}">{{ it.result }}</p>
+                        <p style="margin:0">{{ it.text }}</p>
+                      </div>
+                    </sc-if>
+                  </li>
+                </sc-for>
+              </ul>
+              <sc-if value="{{ sort.editing }}" hint-placeholder-val="{{ true }}">
+                <button type="button" aria-label="{{ g.placeLabel }}" onClick="{{ g.place }}" style="width:100%;min-height:48px;margin-top:10px;background:{{ g.btnBg }};border:2px solid #1A5DAB;border-radius:10px;color:{{ g.btnFg }};font-size:16px;font-weight:600">{{ g.btnText }}</button>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ sort.done }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:12px">
+            <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:22px">{{ sort.summary }}</p>
+            <button type="button" onClick="{{ sort.retry }}" style="min-height:50px;background:transparent;border:2px solid #0B2545;border-radius:10px;color:#0B2545;font-size:17px;font-weight:600" style-hover="background:#E4EBF5">{{ sort.retryLabel }}</button>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isL4 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="04 Scenario: Meeting Grace">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 4</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 18px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Scenario: Meeting Grace</h2>
+        <img src="images/img0.jpg" alt="A woman in a small salon smiling at a client." style="display:block;width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:14px;margin-bottom:22px">
+        <sc-if value="{{ sc.active }}" hint-placeholder-val="{{ true }}">
+          <div id="sc-step" tabindex="-1">
+            <h3 style="margin:0 0 10px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">{{ sc.count }}</h3>
+            <sc-if value="{{ sc.showIntro }}" hint-placeholder-val="{{ true }}">
+              <p style="margin:0 0 18px;text-wrap:pretty">We're advisers at Msingi Life, and today we meet Grace Wambui, 36, who owns a small salon in Thika. She's married with two children in primary school. She came in after seeing an advert and tells us, "I just want a good policy."</p>
+            </sc-if>
+            <sc-if value="{{ sc.showReply }}" hint-placeholder-val="{{ false }}">
+              <figure style="margin:0 0 18px;padding:16px 18px;background:#0B2545;color:#F4F7FB;border-radius:14px 14px 14px 2px">
+                <figcaption style="font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#F3B544;margin-bottom:4px">Grace</figcaption>
+                <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:20px;line-height:1.4;text-wrap:pretty">{{ sc.reply }}</p>
+              </figure>
+            </sc-if>
+            <p style="margin:0 0 14px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.25">{{ sc.prompt }}</p>
+          </div>
+          <sc-if value="{{ sc.choosing }}" hint-placeholder-val="{{ true }}">
+            <ul aria-label="Choices" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ sc.choices }}" as="c" hint-placeholder-count="3">
+                <li>
+                  <button type="button" onClick="{{ c.pick }}" style="width:100%;min-height:56px;text-align:left;padding:12px 16px;border-radius:12px;border:2px solid #0B2545;background:#FFFFFF;color:#0B2545;font-size:17px;font-weight:500;line-height:1.4" style-hover="background:#E4EBF5">{{ c.text }}</button>
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <sc-if value="{{ sc.answered }}" hint-placeholder-val="{{ false }}">
+            <div id="sc-fb" tabindex="-1" style="display:flex;flex-direction:column;gap:14px">
+              <p style="margin:0;padding:12px 16px;border-radius:12px;border:2px solid #0B2545;background:#FFFFFF;font-weight:500;line-height:1.4">{{ sc.chosenText }}</p>
+              <div style="padding:16px 18px;border-radius:12px;border:2px {{ sc.fbBorder }} #0B2545;background:{{ sc.fbBg }}">
+                <sc-if value="{{ sc.wrong }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:0 0 4px;font-weight:700;color:#1A5DAB">Try again</p>
+                </sc-if>
+                <p style="margin:0;text-wrap:pretty">{{ sc.fb }}</p>
+              </div>
+              <button type="button" onClick="{{ sc.proceed }}" style="min-height:52px;background:#1A5DAB;border:2px solid #1A5DAB;border-radius:10px;color:#FFFFFF;font-size:17px;font-weight:600" style-hover="background:#144A8B">{{ sc.proceedLabel }}</button>
+            </div>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ sc.finished }}" hint-placeholder-val="{{ false }}">
+          <div id="sc-step" tabindex="-1" style="display:flex;flex-direction:column;gap:12px">
+            <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.25">We just used the Ask, Probe, Confirm routine.</h3>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px">
+              <li style="padding:12px 16px;border:2px solid #0B2545;border-radius:12px;background:#FFFFFF">In Decision 1 we asked an open question (Ask).</li>
+              <li style="padding:12px 16px;border:2px solid #0B2545;border-radius:12px;background:#FFFFFF">In Decision 2 we followed Grace's own words (Probe).</li>
+              <li style="padding:12px 16px;border:2px solid #0B2545;border-radius:12px;background:#FFFFFF">In Decision 3 we played back her priority (Confirm).</li>
+            </ul>
+            <p style="margin:0 0 6px;text-wrap:pretty">Grace's priority is keeping the salon running and the school fees paid, so our recommendation can now start from her need.</p>
+            <button type="button" onClick="{{ sc.restart }}" style="min-height:50px;background:transparent;border:2px solid #0B2545;border-radius:10px;color:#0B2545;font-size:17px;font-weight:600" style-hover="background:#E4EBF5">I want to do the scenario again</button>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isL5 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="05 Check your understanding">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 5</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 18px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Check your understanding</h2>
+        <sc-if value="{{ quiz.active }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ quiz.submit }}" style="margin:0">
+            <fieldset id="quiz-q" tabindex="-1" style="border:none;margin:0;padding:0;min-width:0">
+              <legend style="padding:0;margin:0 0 14px;width:100%">
+                <span style="display:block;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB;margin-bottom:8px">{{ quiz.count }}</span>
+                <span style="display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.25;text-wrap:pretty">{{ quiz.question }}</span>
+              </legend>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ quiz.options }}" as="o" hint-placeholder-count="3">
+                  <label style="display:flex;gap:12px;align-items:flex-start;min-height:56px;padding:14px 16px;border-radius:12px;border:2px solid #0B2545;background:{{ o.bg }};font-size:17px;font-weight:500;line-height:1.4;cursor:pointer">
+                    <input type="radio" name="quiz-option" checked="{{ o.checked }}" disabled="{{ quiz.submitted }}" onChange="{{ o.pick }}" style="width:22px;height:22px;margin:1px 0 0;flex:none;accent-color:#1A5DAB">
+                    <span style="flex:1">{{ o.text }}</span>
+                    <span style="font-size:14px;font-weight:700;color:#1A5DAB;white-space:nowrap">{{ o.tag }}</span>
+                  </label>
+                </sc-for>
+              </div>
+            </fieldset>
+            <sc-if value="{{ quiz.unsubmitted }}" hint-placeholder-val="{{ true }}">
+              <button type="submit" disabled="{{ quiz.noSel }}" style="width:100%;min-height:52px;margin-top:16px;background:#1A5DAB;border:2px solid #1A5DAB;border-radius:10px;color:#FFFFFF;font-size:17px;font-weight:600;opacity:{{ quiz.submitOpacity }}">Submit</button>
+            </sc-if>
+          </form>
+          <sc-if value="{{ quiz.submitted }}" hint-placeholder-val="{{ false }}">
+            <div id="quiz-fb" tabindex="-1" style="margin-top:16px;display:flex;flex-direction:column;gap:14px">
+              <div style="padding:16px 18px;border-radius:12px;border:2px {{ quiz.fbBorder }} #0B2545;background:{{ quiz.fbBg }}">
+                <p style="margin:0 0 4px;font-weight:700;color:{{ quiz.fbColor }}">{{ quiz.fbLabel }}</p>
+                <p style="margin:0;text-wrap:pretty">{{ quiz.fb }}</p>
+              </div>
+              <button type="button" onClick="{{ quiz.next }}" style="min-height:52px;background:#1A5DAB;border:2px solid #1A5DAB;border-radius:10px;color:#FFFFFF;font-size:17px;font-weight:600" style-hover="background:#144A8B">{{ quiz.nextLabel }}</button>
+            </div>
+          </sc-if>
+        </sc-if>
+        <sc-if value="{{ quiz.finished }}" hint-placeholder-val="{{ false }}">
+          <div id="quiz-q" tabindex="-1" style="background:#0B2545;color:#F4F7FB;border-radius:14px;padding:26px 20px;display:flex;flex-direction:column;gap:16px">
+            <h3 style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:30px;line-height:1.15;color:#F4F7FB">{{ quiz.scoreText }}</h3>
+            <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ quiz.results }}" as="r" hint-placeholder-count="4">
+                <li>{{ r.question }} <strong style="color:#F3B544;white-space:nowrap">{{ r.label }}</strong></li>
+              </sc-for>
+            </ol>
+            <button type="button" onClick="{{ quiz.restart }}" style="min-height:50px;background:#EFA920;border:2px solid #EFA920;border-radius:10px;color:#0B2545;font-size:17px;font-weight:700" style-hover="background:#F3B544">Retake quiz</button>
+          </div>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isL6 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="06 Summary">
+        <p style="margin:0 0 6px;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1A5DAB">Lesson 6</p>
+        <h2 id="lesson-title" tabindex="-1" style="margin:0 0 14px;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:34px;line-height:1.15;color:#0B2545">Summary</h2>
+        <p style="margin:0 0 22px;text-wrap:pretty">This course emphasized the importance of understanding client needs through effective communication strategies.</p>
+        <ol style="list-style:none;margin:0 0 26px;padding:0;display:flex;flex-direction:column">
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">1</span><p style="margin:0"><strong>Prioritize inquiry</strong>. Begin by asking questions to uncover client needs.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">2</span><p style="margin:0"><strong>Listen actively</strong>. Pay close attention to clients' responses to understand their concerns.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">3</span><p style="margin:0"><strong>Tailor recommendations</strong>. Provide advice that aligns with the insights gathered.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">4</span><p style="margin:0"><strong>Understand question types</strong>. Differentiate between open, closed, and leading questions.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">5</span><p style="margin:0"><strong>Confirm understanding</strong>. Reflect clients' priorities back to ensure clarity.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">6</span><p style="margin:0"><strong>Practice empathy</strong>. Acknowledge clients' emotions to build trust.</p></li>
+          <li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid #C9D3E0;border-bottom:1px solid #C9D3E0"><span aria-hidden="true" style="font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.15;color:#1A5DAB;min-width:22px">7</span><p style="margin:0"><strong>Observe non-verbal cues</strong>. Pay attention to body language and expressions for deeper insights.</p></li>
+        </ol>
+        <div style="background:#0B2545;color:#F4F7FB;border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:12px">
+          <p style="margin:0;text-wrap:pretty">By applying these principles, you can enhance your client interactions and provide meaningful, tailored solutions.</p>
+          <p style="margin:0;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:24px;line-height:1.2;color:#F3B544">Thank you for completing the course!</p>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <nav aria-label="Lesson navigation" style="width:100%;max-width:{{ colMax }};margin:0 auto;padding:{{ navPad }};display:flex;gap:12px">
+    <sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ false }}">
+      <button type="button" aria-label="{{ prevLabel }}" onClick="{{ goPrev }}" style="flex:1;min-height:54px;background:transparent;border:2px solid #0B2545;border-radius:12px;color:#0B2545;font-size:17px;font-weight:600" style-hover="background:#E4EBF5">Previous</button>
+    </sc-if>
+    <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+      <button type="button" aria-label="{{ nextLabel }}" onClick="{{ goNext }}" style="flex:2;min-height:54px;background:#EFA920;border:2px solid #EFA920;border-radius:12px;color:#0B2545;font-size:17px;font-weight:700" style-hover="background:#F3B544;border-color:#F3B544">Next lesson</button>
+    </sc-if>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;shuffleSort&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Behaviour&quot;},&quot;startLesson&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[1,2,3,4,5,6],&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Behaviour&quot;}}">
+const LESSONS = ['Welcome', 'Discovery comes first', 'Choose the right question', 'Scenario: Meeting Grace', 'Check your understanding', 'Summary'];
+const STEPS = [
+  ['Ask', 'We start with an open question that invites clients to describe their situation.'],
+  ['Probe', "We follow clients' own words and ask who depends on them and what the costs are."],
+  ['Confirm', "We play back the priority in clients' own terms and check that we understood."]
+];
+const TABS = [
+  ['Open', 'Open questions invite clients to explain in their own words.', 'For example: "How would your household cope if your income stopped?"'],
+  ['Closed', 'Closed questions call for a short answer, such as yes or no, so they work well for facts.', 'For example: "Do you already have life cover?"'],
+  ['Leading', 'Leading questions push clients towards the answer we expect, so we avoid them in discovery.', 'For example: "You\'ll want the education plan, won\'t you?"']
+];
+const GROUPS = ['Open', 'Closed', 'Leading'];
+const SORT = [
+  ['a', '"What worries you most about the next five years?"', 'Open'],
+  ['b', '"You\'ll want the education plan, won\'t you?"', 'Leading'],
+  ['c', '"Do you already have life cover?"', 'Closed'],
+  ['d', '"How would your household cope if your income stopped?"', 'Open'],
+  ['e', '"Surely you agree that more cover is better?"', 'Leading'],
+  ['f', '"Is your policy up to date?"', 'Closed']
+];
+const DECISIONS = [
+  { prompt: 'What do we say first?', choices: [
+    ['Which of our policies would you like to hear about?', false, "That hands the choice back to Grace before we know her situation, so she might pick a product she doesn't need."],
+    ["Tell me what is on your mind when you think about your family's finances.", true, 'Spot on. This open question lets Grace describe her own concerns, and we can follow them.'],
+    ['I assume you want the education plan for your children?', false, "That's a leading question. It puts our assumption in Grace's mouth and may close off her real priority."]
+  ] },
+  { reply: "If something happened to me, the salon would close, and my husband's salary alone would not cover school fees.", prompt: 'How do we respond?', choices: [
+    ['Our critical illness cover is excellent. Let me explain how it works.', false, 'Too early. Grace has shared a concern, and a product pitch skips the detail we still need.'],
+    ['How many people rely on the salon income, and what would need paying first if it stopped?', true, "Spot on. This follows Grace's own words and gives us the figures that shape our recommendation."],
+    ['Do you have any existing policy?', false, "That's useful information, but it's a closed question and it moves away from what Grace just told us. We ask it after we've explored her concern."]
+  ] },
+  { reply: 'Six staff depend on it, and school fees are about KES 180,000 a year.', prompt: 'What do we do next?', choices: [
+    ['So the priority is keeping the school fees paid and the salon running if you cannot work. Have I understood that correctly?', true, 'Spot on. We play back her priority in her own terms and give her the chance to correct us.'],
+    ["Great, I'll send you a quote for the education plan.", false, "We've skipped confirmation and assumed the answer, and the salon's six staff are still unaddressed."],
+    ["To be safe, I'll recommend the highest cover we offer.", false, 'That ignores what Grace told us and risks selling her more than she needs, which goes against treating customers fairly.']
+  ] }
+];
+const QUIZ = [
+  { q: 'Which question is open?', a: 1, o: [
+    ['Do you have dependants?', "That calls for a yes or no, so it's closed."],
+    ['How would your family manage if your income stopped?', 'Spot on. It invites clients to describe their situation.'],
+    ["You'd like a plan that covers everything, wouldn't you?", 'That leads clients to agree with us.']
+  ] },
+  { q: "Clients often tell us they worry about their children's future. What do we do next?", a: 1, o: [
+    ['We describe the three most popular plans.', "That's premature. We don't yet know what the worry covers."],
+    ['We ask what they mean by "future" and what they would want protected first.', "Spot on. We follow clients' own words to find the need."],
+    ['We ask only about their age and income.', 'Facts matter, and we start by exploring the worry.']
+  ] },
+  { q: "Why do we play back clients' priorities before we recommend anything?", a: 2, o: [
+    ['It shortens our meetings.', 'Playback can add a minute, and it prevents an expensive mistake.'],
+    ['It lets us introduce more products.', 'The purpose is accuracy and trust.'],
+    ['It confirms we understood and lets clients correct us.', 'Correct. Accuracy and trust come first.']
+  ] },
+  { q: 'What is our best next step after clients name their main concern?', a: 0, o: [
+    ['We probe for detail on who depends on them and what the costs are.', 'Spot on. The detail shapes a fair recommendation.'],
+    ['We present the product with the highest commission.', "That puts our interest ahead of our clients' needs."],
+    ['We move to the application form.', "We haven't established the need yet."]
+  ] }
+];
+const KEY = 'abya-lesson';
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let lesson = (props.startLesson ?? 1) - 1;
+    try { const s = localStorage.getItem(KEY); if (s !== null && props.startLesson == null) lesson = +s || 0; } catch (e) {}
+    let order = SORT.map(s => s[0]);
+    if (props.shuffleSort) order = order.map(v => [Math.random(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    this.state = {
+      lesson: Math.min(5, Math.max(0, lesson)), menuOpen: false, announce: '',
+      step: 0, tab: 0,
+      order, placed: {}, selected: null,
+      dec: 0, chosen: null, scDone: false,
+      qi: 0, sel: null, submitted: false, answers: []
+    };
+    this.mq = window.matchMedia('(min-width: 920px)');
+    this.state.wide = this.mq.matches;
+    this.onMq = e => this.setState({ wide: e.matches });
+    this.onKey = e => { if (e.key === 'Escape' && this.state.menuOpen) this.setState({ menuOpen: false }); };
+  }
+  componentDidMount() { document.addEventListener('keydown', this.onKey); this.mq.addEventListener('change', this.onMq); }
+  componentWillUnmount() { document.removeEventListener('keydown', this.onKey); this.mq.removeEventListener('change', this.onMq); }
+  focusId(id) { setTimeout(() => { const el = document.getElementById(id); if (el) el.focus({ preventScroll: id !== 'lesson-title' }); }, 60); }
+  say(msg) { this.setState({ announce: '' }, () => setTimeout(() => this.setState({ announce: msg }), 50)); }
+  go(i) {
+    if (i < 0 || i > 5) return;
+    try { localStorage.setItem(KEY, String(i)); } catch (e) {}
+    this.setState({ lesson: i, menuOpen: false, announce: '' }, () => { window.scrollTo(0, 0); this.focusId('lesson-title'); });
+  }
+  place(group) {
+    const { selected, placed } = this.state;
+    if (!selected) return this.say('Select a question first, then choose a group.');
+    const next = { ...placed, [selected]: group };
+    const all = SORT.every(s => next[s[0]]);
+    this.setState({ placed: next, selected: null });
+    if (all) {
+      const n = SORT.filter(s => next[s[0]] === s[2]).length;
+      this.say('All questions placed. ' + n + ' of 6 placed correctly.');
+    } else this.say('Placed in ' + group + '.');
+  }
+  renderVals() {
+    const s = this.state, L = s.lesson;
+    const vals = {
+      wide: s.wide, narrow: !s.wide, showDrop: s.menuOpen && !s.wide,
+      colMax: s.wide ? '1080px' : '640px', mainPad: s.wide ? '36px 20px 24px 340px' : '28px 20px 24px', navPad: s.wide ? '8px 20px 40px 340px' : '8px 20px 28px',
+      announce: s.announce, menuOpen: s.menuOpen, menuLabel: s.menuOpen ? 'Close menu' : 'Menu',
+      toggleMenu: () => this.setState(p => ({ menuOpen: !p.menuOpen })),
+      lessonNum: L + 1, progressText: 'Lesson ' + (L + 1) + ' of 6',
+      segs: LESSONS.map((_, i) => ({ bg: i < L ? '#0B2545' : i === L ? '#EFA920' : 'transparent' })),
+      menu: LESSONS.map((title, i) => ({
+        n: i + 1, title, current: i === L ? 'step' : undefined, tag: i === L ? 'Current' : '',
+        bg: i === L ? '#DCE8F8' : 'transparent', border: i === L ? '#0B2545' : '#C9D3E0', weight: i === L ? 700 : 500,
+        go: () => this.go(i)
+      })),
+      hasPrev: L > 0, hasNext: L < 5,
+      prevLabel: L > 0 ? 'Previous lesson: ' + LESSONS[L - 1] : '', nextLabel: L < 5 ? 'Next lesson: ' + LESSONS[L + 1] : '',
+      goPrev: () => this.go(L - 1), goNext: () => this.go(L + 1)
+    };
+    for (let i = 0; i < 6; i++) vals['isL' + (i + 1)] = L === i;
+
+    const setStep = d => this.setState({ step: s.step + d }, () => this.focusId('proc-step'));
+    vals.proc = {
+      count: 'Step ' + (s.step + 1) + ' of 3', title: STEPS[s.step][0], body: STEPS[s.step][1],
+      noBack: s.step === 0, noNext: s.step === 2, backOpacity: s.step === 0 ? 0.45 : 1, nextOpacity: s.step === 2 ? 0.45 : 1,
+      back: () => setStep(-1), next: () => setStep(1)
+    };
+
+    vals.tabs = TABS.map((t, i) => ({
+      id: 'tab-' + i, name: t[0], selected: i === s.tab, tabIndex: i === s.tab ? 0 : -1,
+      bg: i === s.tab ? '#FFFFFF' : '#0B2545', fg: i === s.tab ? '#0B2545' : '#F4F7FB',
+      bbw: i === s.tab ? '0' : '2px', deco: i === s.tab ? 'underline' : 'none',
+      pick: () => this.setState({ tab: i })
+    }));
+    vals.tabKey = e => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      let n = e.key === 'Home' ? 0 : e.key === 'End' ? 2 : d ? (s.tab + d + 3) % 3 : null;
+      if (n === null) return;
+      e.preventDefault();
+      this.setState({ tab: n }, () => this.focusId('tab-' + n));
+    };
+    vals.tabPanel = { labelledBy: 'tab-' + s.tab, body: TABS[s.tab][1], example: TABS[s.tab][2] };
+
+    const items = s.order.map(id => SORT.find(x => x[0] === id));
+    const allPlaced = items.every(it => s.placed[it[0]]);
+    const mk = it => {
+      const id = it[0], sel = s.selected === id, ok = s.placed[id] === it[2];
+      return {
+        text: it[1], selected: sel, bg: sel ? '#0B2545' : '#F4F7FB', fg: sel ? '#F4F7FB' : '#0B2545', tag: sel ? 'Selected' : '',
+        result: ok ? '\u2713 Correct' : '\u2717 Not quite. This one is ' + it[2] + '.',
+        resColor: ok ? '#0B2545' : '#1A5DAB', resBorder: ok ? 'solid' : 'dashed',
+        pick: () => this.setState({ selected: sel ? null : id }),
+        drag: e => { e.dataTransfer.setData('text/plain', id); e.dataTransfer.effectAllowed = 'move'; this.setState({ selected: id }); }
+      };
+    };
+    const nRight = items.filter(it => s.placed[it[0]] === it[2]).length;
+    vals.sort = {
+      pool: items.filter(it => !s.placed[it[0]]).map(mk), hasPool: !allPlaced,
+      editing: !allPlaced, done: allPlaced,
+      summary: nRight + ' of 6 placed correctly.',
+      retryLabel: nRight === 6 ? 'Sort again' : 'Try again',
+      retry: () => {
+        const keep = {};
+        if (nRight < 6) items.forEach(it => { if (s.placed[it[0]] === it[2]) keep[it[0]] = it[2]; });
+        this.setState({ placed: keep, selected: null }, () => this.focusId('lesson-title'));
+      },
+      groups: GROUPS.map(g => ({
+        name: g, listLabel: 'Questions placed in ' + g,
+        items: items.filter(it => s.placed[it[0]] === g).map(mk),
+        placeLabel: 'Place selected question in ' + g,
+        btnText: 'Place in ' + g,
+        btnBg: s.selected ? '#1A5DAB' : 'transparent', btnFg: s.selected ? '#FFFFFF' : '#1A5DAB',
+        place: () => this.place(g),
+        over: e => e.preventDefault(),
+        drop: e => { e.preventDefault(); this.place(g); }
+      }))
+    };
+
+    const D = DECISIONS[s.dec], ch = s.chosen !== null ? D.choices[s.chosen] : null;
+    vals.sc = {
+      active: !s.scDone, finished: s.scDone,
+      count: 'Decision ' + (s.dec + 1) + ' of 3',
+      showIntro: s.dec === 0, showReply: !!D.reply, reply: D.reply || '', prompt: D.prompt,
+      choosing: !ch, answered: !!ch,
+      choices: D.choices.map((c, i) => ({ text: c[0], pick: () => this.setState({ chosen: i }, () => this.focusId('sc-fb')) })),
+      chosenText: ch ? ch[0] : '', fb: ch ? ch[2] : '', wrong: !!ch && !ch[1],
+      fbBorder: ch && ch[1] ? 'solid' : 'dashed', fbBg: ch && ch[1] ? '#DCE8F8' : '#FFFFFF',
+      proceedLabel: ch && ch[1] ? 'Continue' : 'Try again',
+      proceed: () => {
+        if (!ch[1]) return this.setState({ chosen: null }, () => this.focusId('sc-step'));
+        this.setState(s.dec === 2 ? { scDone: true, chosen: null } : { dec: s.dec + 1, chosen: null }, () => this.focusId('sc-step'));
+      },
+      restart: () => this.setState({ dec: 0, chosen: null, scDone: false }, () => this.focusId('sc-step'))
+    };
+
+    const finished = s.qi >= QUIZ.length, Q = QUIZ[Math.min(s.qi, 3)], right = s.sel === Q.a;
+    const score = s.answers.filter(Boolean).length;
+    vals.quiz = {
+      active: !finished, finished,
+      count: 'Question ' + (Math.min(s.qi, 3) + 1) + ' of 4', question: Q.q,
+      submitted: s.submitted, unsubmitted: !s.submitted, noSel: s.sel === null, submitOpacity: s.sel === null ? 0.45 : 1,
+      options: Q.o.map((o, i) => ({
+        text: o[0], checked: s.sel === i, bg: s.sel === i ? '#DCE8F8' : '#FFFFFF',
+        tag: s.submitted && s.sel === i ? 'Your answer' : '',
+        pick: () => this.setState({ sel: i })
+      })),
+      submit: e => { e.preventDefault(); if (s.sel === null || s.submitted) return; this.setState({ submitted: true, answers: [...s.answers, right] }, () => this.focusId('quiz-fb')); },
+      fb: s.sel !== null ? Q.o[s.sel][1] : '',
+      fbLabel: right ? '\u2713 Correct answer' : '\u2717 Incorrect answer',
+      fbColor: right ? '#0B2545' : '#1A5DAB', fbBorder: right ? 'solid' : 'dashed', fbBg: right ? '#DCE8F8' : '#FFFFFF',
+      nextLabel: s.qi === 3 ? 'See score' : 'Next question',
+      next: () => this.setState({ qi: s.qi + 1, sel: null, submitted: false }, () => this.focusId('quiz-q')),
+      scoreText: 'You scored ' + score + ' out of 4',
+      results: QUIZ.map((q, i) => ({ question: q.q, label: s.answers[i] ? '\u2713 Correct' : '\u2717 Incorrect' })),
+      restart: () => this.setState({ qi: 0, sel: null, submitted: false, answers: [] }, () => this.focusId('quiz-q'))
+    };
+    return vals;
+  }
+}
+</script>
+</body>
 </html>
